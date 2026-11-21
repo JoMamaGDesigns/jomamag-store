@@ -101,14 +101,14 @@ section.headliner{padding-top:36px}
 
 /* Top search — pinned to the very top of the page from the first screen: it sits above the
    entrance gate (z-index over the gate's 100) and stays pinned once inside, so a piece can be
-   found by name or colour without scrolling halfway down the page. It drives the same search
-   as the field in the filter bar below; the two boxes mirror each other. */
+   found by name or colour without scrolling halfway down the page. It is the store's only
+   search box, and the count line under it is the store's only piece count. */
 .topsearch{position:sticky;top:0;z-index:110;background:var(--purple-deep);border-bottom:2px solid var(--gold);padding:10px 0 8px;box-shadow:var(--shadow)}
 .topsearch .search{display:block;width:100%}
 .topsearch .count-line{margin-top:6px}
 
-/* Filter bar — no longer sticky: the pinned top search above carries the always-there search,
-   and two sticky bars would slide over each other. */
+/* Filter bar — not sticky, and chips only: the pinned top bar carries the search and the
+   count, so this bar never repeats them. */
 .filterbar{background:var(--purple-deep);border-bottom:2px solid var(--gold);padding:14px 0}
 .filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .chip{border:1.5px solid var(--line);background:var(--chip);color:var(--ink);padding:9px 16px;border-radius:999px;font-size:15px;font-weight:500;cursor:pointer;font-family:inherit}
@@ -265,8 +265,8 @@ body.gate-open{overflow:hidden}
 <noscript><style>#entryGate{display:none}body{overflow:auto !important}</style></noscript>
 
 <!-- Top search — the first thing on the page, over the entrance and pinned at the top inside:
-     find a piece by name or colour straight away, no scrolling halfway down. Same search as
-     the field in the filter bar below; the two boxes mirror each other. -->
+     find a piece by name or colour straight away, no scrolling halfway down. This is the
+     store's ONE search box, and the line under it is the store's ONE piece count. -->
 <div class="topsearch"><div class="wrap">
   <input class="search" id="topSearch" type="search" placeholder="Search by name — try “leopard” or “purple”" aria-label="Search pieces by name">
   <div class="count-line" id="topCountLine" aria-live="polite"></div>
@@ -331,6 +331,19 @@ body.gate-open{overflow:hidden}
 </header>
 
 <div class="wrap">
+  <!-- WOMEN'S / MEN'S LINE TABS — the way into the collection: pick a line, then a category
+       from the choices that open right under it, and the pieces follow below. The tabs stand
+       here, first after the masthead, so the path through 285+ pieces starts at the top of
+       the shop instead of halfway down it. -->
+  <div class="linebar" role="group" aria-label="Choose a clothing line">
+    <button class="line-tab" type="button" data-line-tab="women" aria-pressed="true">Women&rsquo;s</button>
+    <button class="line-tab" type="button" data-line-tab="men" aria-pressed="false">Men&rsquo;s</button>
+  </div>
+  <div class="subbar" id="subbarWomen" role="group" aria-label="Women's categories"></div>
+  <div class="subbar" id="subbarMen" role="group" aria-label="Men's categories" hidden></div>
+</div>
+
+<div class="wrap">
   <!-- SPECIAL-REQUEST SHOWCASE -->
   <section data-showcase aria-labelledby="showcase-h">
     <div class="sec-head">
@@ -369,16 +382,6 @@ body.gate-open{overflow:hidden}
   </section>
 </div>
 
-
-<div class="wrap">
-  <!-- WOMEN'S / MEN'S LINE TABS — the clothing collections below show one line at a time -->
-  <div class="linebar" role="group" aria-label="Choose a clothing line">
-    <button class="line-tab" type="button" data-line-tab="women" aria-pressed="true">Women&rsquo;s</button>
-    <button class="line-tab" type="button" data-line-tab="men" aria-pressed="false">Men&rsquo;s</button>
-  </div>
-  <div class="subbar" id="subbarWomen" role="group" aria-label="Women's categories"></div>
-  <div class="subbar" id="subbarMen" role="group" aria-label="Men's categories" hidden></div>
-</div>
 
 <div class="wrap">
   <!-- ROSE CAPSULE -->
@@ -453,7 +456,6 @@ body.gate-open{overflow:hidden}
       <button class="btn btn-outline" type="button" data-copy="#JoMamaG">Copy #JoMamaG</button>
     </div>
     <div class="hero-meta">
-      <span><strong>256</strong> published pieces</span>
       <span><strong>Prices</strong> in Meta Credits where set — made-to-order pieces priced on ordering</span>
       <span><strong>Signed</strong> Jo_Mama_G under every listing</span>
     </div>
@@ -465,9 +467,7 @@ body.gate-open{overflow:hidden}
     <div class="filter-row" role="group" aria-label="Filter the collection">
       <button class="chip" type="button" data-filter="all" aria-pressed="true">All pieces</button>
       <button class="chip" type="button" data-filter="animal" aria-pressed="false">Animal sets</button>
-      <input class="search" id="search" type="search" placeholder="Search by name — try “leopard” or “purple”" aria-label="Search pieces by name">
     </div>
-    <div class="count-line" id="countLine" aria-live="polite"></div>
   </div>
 </div>
 
@@ -494,10 +494,6 @@ body.gate-open{overflow:hidden}
       </div>
       <button class="btn btn-purple" type="button" data-copy="#JoMamaG #Denim #JeansStyle #MetaHorizon #HorizonCreator #AvatarFashion #VRStyle">Copy jeans hashtags</button>
     </div>
-    <figure class="sec-image">
-      <img src="assets/jeans.jpg" alt="Illustrative stack of folded jeans in purple, red, green, orange, white, brown and black">
-      <figcaption>The colour idea behind the wall — illustrative photo. Exact shades are on each Horizon listing.</figcaption>
-    </figure>
     <div class="grid" data-grid="jeans"></div>
   </section>
 
@@ -511,10 +507,6 @@ body.gate-open{overflow:hidden}
       </div>
       <button class="btn btn-purple" type="button" data-copy="#JoMamaG #Denim #JeansStyle #MetaHorizon #HorizonCreator #AvatarFashion #VRStyle">Copy jeans hashtags</button>
     </div>
-    <figure class="sec-image">
-      <img src="assets/jeans.jpg" alt="Illustrative stack of folded jeans in purple, red, green, orange, white, brown and black">
-      <figcaption>The colour idea behind the wall — illustrative photo. Exact shades are on each Horizon listing.</figcaption>
-    </figure>
     <div class="grid" data-grid="jeans-men"></div>
   </section>
 
@@ -1280,9 +1272,8 @@ var STATIC_KEYS=[
 [".hero-actions a[href='#shop']","browse","html"],
 [".hero-actions a.btn-outline","storefrontBtn","html"],
 [".hero-actions button","copyTag","html"],
-[".hero-meta span:nth-child(1)","meta1","html"],
-[".hero-meta span:nth-child(2)","meta2","html"],
-[".hero-meta span:nth-child(3)","meta3","html"],
+[".hero-meta span:nth-child(1)","meta2","html"],
+[".hero-meta span:nth-child(2)","meta3","html"],
 [".filter-row","filterLabel","attr:aria-label"],
 ["[data-line-tab='women']","lineWomen","text"],
 ["[data-line-tab='men']","lineMen","text"],
@@ -1294,8 +1285,6 @@ var STATIC_KEYS=[
 ["[data-filter='jeans']","chipJeans","text"],
 ["[data-filter='animal']","chipAnimal","text"],
 ["[data-filter='signature']","chipSignature","text"],
-["#search","searchPh","attr:placeholder"],
-["#search","searchAria","attr:aria-label"],
 ["#topSearch","searchPh","attr:placeholder"],
 ["#topSearch","searchAria","attr:aria-label"],
 [".headliner-label","headlinerLabel","text"],
@@ -3717,10 +3706,6 @@ function render(){
      the page must not be promised by any number on it. */
   RENDERED_NAMES={};
   document.querySelectorAll(".card, .vip-card[data-name]").forEach(function(c){ var n=c.getAttribute("data-name"); if(n) RENDERED_NAMES[n]=1; });
-  /* The shop-door blurb's piece count is this same number — the pieces actually standing on
-     the page — so the blurb and the count line can never contradict each other. */
-  var metaCount=document.querySelector(".hero-meta span strong");
-  if(metaCount) metaCount.textContent=String(Object.keys(RENDERED_NAMES).length);
 }
 var RENDERED_NAMES={};
 applyStatic();
@@ -3750,12 +3735,15 @@ document.addEventListener("click",function(e){
 var currentFilter="all";
 var currentLine="women";
 var currentKind="all";
-/* Set by the line, category and filter buttons (never by typing or by the page loading):
-   after the tap's filter is applied, the page walks the shopper to the first shelf that
-   holds a showing piece. Without this, a tap on Dresses, Tops, Tees or Suits filtered the
-   page correctly but left the shopper staring at whatever was already on screen — the
-   pieces stand on their own walls, far from the buttons — so the tap looked like it did
-   nothing at all and "nothing came up". */
+/* Set by the category and filter buttons (never by typing, by the page loading, or by a
+   Women's/Men's line-tab tap): after the tap's filter is applied, the page walks the
+   shopper to the first shelf that holds a showing piece. Without this, a tap on Dresses,
+   Tops, Tees or Suits filtered the page correctly but left the shopper staring at
+   whatever was already on screen — the pieces stand on their own walls, far from the
+   buttons — so the tap looked like it did nothing at all and "nothing came up".
+   A line-tab tap deliberately does NOT set this: its job is to present that line's
+   category choices right under the tabs, and scrolling away on the tap would snatch
+   those choices out from under the shopper before she could pick one. */
 var pendingScroll=false;
 var REDUCED_MOTION=false;
 try{ REDUCED_MOTION=window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
@@ -3769,17 +3757,21 @@ function scrollToFirstResult(){
   if(target && target.scrollIntoView) target.scrollIntoView({behavior:REDUCED_MOTION?"auto":"smooth",block:"start"});
 }
 var chips=document.querySelectorAll("[data-filter]");
-var searchInput=document.getElementById("search");
-var topSearchInput=document.getElementById("topSearch");
+/* ONE search box in the whole store — the field pinned in the top bar — and ONE piece
+   count, the line under it. (The filter bar once carried a second search field and a
+   second count line, and the banner a third count; at 285+ pieces those repeats were
+   the "all over the place" Catherine called out, so they came out in the rework.) */
+var searchInput=document.getElementById("topSearch");
+var topSearchInput=null;
 var countLines=document.querySelectorAll(".count-line");
-/* One search, two boxes — the pinned top bar and the filter-bar field mirror each other.
-   Typing in either is a fresh start: it clears the filter chip and the category sub-tab, and
-   while a search word is in the box the search looks across BOTH lines. Tapping any filter,
-   line or category button likewise clears the search boxes. The two never silently combine —
-   that was the trap: a phrase left in the search box (a whole phrase that matched nothing on
-   its own) stayed active behind the next button tapped, so the Joggers button, which counts
-   12 pieces, could be tapped and show nothing at all, and a search typed after picking a
-   category looked just as broken. Each control now does exactly what it says on its own. */
+/* Typing in the search box is a fresh start: it clears the filter chip and the category
+   sub-tab, and while a search word is in the box the search looks across BOTH lines.
+   Tapping any filter, line or category button likewise clears the search box. The two
+   never silently combine — that was the trap: a phrase left in the search box (a whole
+   phrase that matched nothing on its own) stayed active behind the next button tapped,
+   so the Joggers button, which counts 12 pieces, could be tapped and show nothing at
+   all, and a search typed after picking a category looked just as broken. Each control
+   now does exactly what it says on its own. */
 function clearSearchBoxes(){
   if(searchInput) searchInput.value="";
   if(topSearchInput) topSearchInput.value="";
@@ -3950,7 +3942,12 @@ lineTabs.forEach(function(tab){
     if(subbars.women) subbars.women.hidden = currentLine!=="women";
     if(subbars.men) subbars.men.hidden = currentLine!=="men";
     buildSubbar(currentLine);
-    pendingScroll=true;
+    /* No scroll on a line-tab tap: the tap's whole point is to offer the shopper the
+       line's category choices (the sub-bar appears right under the tabs), so she stays
+       exactly where she tapped and picks one — the page must not squirrel her down to
+       the first shelf before she can choose. Picking a category (or a filter chip) is
+       what walks her down to the pieces. */
+    pendingScroll=false;
     applyFilter();
   });
 });
