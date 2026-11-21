@@ -1248,6 +1248,8 @@ var ITEMS = [
   {name:"Black & White Swirl Wrap Top", price:350, cat:"signature", catLabel:"Wrap top", note:"Black and white swirl wrap top with ruched sash and gold buttons.", url:"https://horizon.meta.com/avatar/item?id=1198989902785389", img:"assets/meta-SWIRL-WRAP-TOP-20261121.png", imgAlt:"Black & White Swirl Wrap Top — the finished top, front view, Meta render"},
   /* Added 2026-11-21 — the Gold Glitter Gown, standing on the Dresses wall */
   {name:"Gold Glitter Gown", price:500, cat:"signature", catLabel:"Gown", note:"Gold glitter gown.", url:"https://horizon.meta.com/avatar/item?id=1870645747612956", img:"assets/meta-GOLD-GLITTER-GOWN-20261121.png", imgAlt:"Gold Glitter Gown — the finished gown, front view, Meta render"},
+  /* Added 2026-11-21 — the Cream Butterfly Beanie, standing on the Hats shelf beside the snowflake knit hats */
+  {name:"Cream Butterfly Beanie", price:250, cat:"signature", catLabel:"Beanie", note:"Cream corduroy beanie with a bronze butterfly and bead band.", url:"https://horizon.meta.com/avatar/item?id=3391676027706290", img:"assets/meta-CREAM-BUTTERFLY-BEANIE-20261121.png", imgAlt:"Cream Butterfly Beanie — the finished hat, front view, Meta render"},
 ];
 
 /* ============ Languages ============ */
@@ -3606,7 +3608,7 @@ function render(){
     dressOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.dresses.appendChild(src.cloneNode(true)); });
   }
   if(grids.hats){
-    var hatOrder=["Gold Rhinestone Knit Hat","Navy Snowflake Knit Hat","Green Snowflake Knit Hat","Red Snowflake Knit Hat","Alaari Cap","Earth Cap","Groundnut Cap","Indigo Cap","Kente Zigzag Cap","Kuba Cap","Sanyan Cap","Red Sequin Cap","Rose Pink Sequin Cap","Gold Sequin Cap","Silver Sequin Cap","Emerald Sequin Cap","Prism Purple Sequin Cap","Black Sequin Cap","Royal Blue Sequin Cap"];
+    var hatOrder=["Gold Rhinestone Knit Hat","Navy Snowflake Knit Hat","Green Snowflake Knit Hat","Red Snowflake Knit Hat","Cream Butterfly Beanie","Alaari Cap","Earth Cap","Groundnut Cap","Indigo Cap","Kente Zigzag Cap","Kuba Cap","Sanyan Cap","Red Sequin Cap","Rose Pink Sequin Cap","Gold Sequin Cap","Silver Sequin Cap","Emerald Sequin Cap","Prism Purple Sequin Cap","Black Sequin Cap","Royal Blue Sequin Cap"];
     hatOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.hats.appendChild(src.cloneNode(true)); });
   }
   /* The Shoes shelf — the complete shoe range in one place, the dual showing of Catherine's
