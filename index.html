@@ -556,7 +556,7 @@ body.gate-open{overflow:hidden}
       <div>
         <h2 id="joggers-men-h"><svg class="sec-mask" aria-hidden="true"><use href="#mg-mask"/></svg>Men&rsquo;s Joggers</h2>
         <div class="gold-rule"></div>
-        <p class="lede">The men&rsquo;s jogger sets gathered in one place — Charcoal, Olive, Washed Black and Midnight Navy camo, a hoodie top and its jogger pants in each.</p>
+        <p class="lede">The men&rsquo;s jogger sets gathered in one place — Charcoal, Olive, Washed Black and Midnight Navy camo, plus the Groundnut, Sanyan and Kuba African print sets, a hoodie top and its jogger pants in each.</p>
       </div>
     </div>
     <div class="grid" data-grid="joggers-men"></div>
@@ -1264,6 +1264,12 @@ var ITEMS = [
   {name:"Earth Bogolan Crew", price:250, cat:"signature", catLabel:"African Print · Jogger crew top — Matching set", note:"Earth Bogolan crew top.", url:"https://horizon.meta.com/avatar/item?id=1794964261709664", img:"assets/earth-bogolan-crew-meta-20261121.png", imgAlt:"Earth Bogolan Crew — the finished crew top, front view, Meta render"},
   {name:"Indigo Bogolan Hoodie", price:250, cat:"signature", catLabel:"African Print · Jogger hoodie — Matching set", note:"Indigo Bogolan hoodie.", url:"https://horizon.meta.com/avatar/item?id=1015005208325897", img:"assets/indigo-bogolan-hoodie-meta-20261121.png", imgAlt:"Indigo Bogolan Hoodie — the finished hoodie, front view, Meta render"},
   {name:"Indigo Bogolan Jogger Pants", price:250, cat:"signature", catLabel:"African Print · Jogger pants — Matching set", note:"Indigo Bogolan jogger pants.", url:"https://horizon.meta.com/avatar/item?id=4758376574443405", img:"assets/indigo-bogolan-jogger-pants-meta-20261121.png", imgAlt:"Indigo Bogolan Jogger Pants — the finished pants, front view, Meta render"},
+  {name:"Men's Groundnut Hoodie", price:250, cat:"signature", catLabel:"African Print · Jogger hoodie — Matching set", note:"Red and green groundnut lattice Ankara hoodie — pairs with the Men's Groundnut Jogger Pants.", url:"https://horizon.meta.com/avatar/item?id=1684129653123111", img:"assets/mens-groundnut-hoodie-meta-20261121.png", imgAlt:"Men's Groundnut Hoodie — the finished hoodie, front view, Meta render"},
+  {name:"Men's Groundnut Jogger Pants", price:250, cat:"signature", catLabel:"African Print · Jogger pants — Matching set", note:"Red and green groundnut lattice Ankara joggers — pairs with the Men's Groundnut Hoodie.", url:"https://horizon.meta.com/avatar/item?id=1125833343693974", img:"assets/mens-groundnut-jogger-pants-meta-20261121.png", imgAlt:"Men's Groundnut Jogger Pants — the finished pants, front view, Meta render"},
+  {name:"Men's Sanyan Hoodie", price:250, cat:"signature", catLabel:"African Print · Jogger hoodie — Matching set", note:"Cream and tan Sanyan aso oke woven hoodie — pairs with the Men's Sanyan Jogger Pants.", url:"https://horizon.meta.com/avatar/item?id=1395455815803614", img:"assets/mens-sanyan-hoodie-meta-20261121.png", imgAlt:"Men's Sanyan Hoodie — the finished hoodie, front view, Meta render"},
+  {name:"Men's Sanyan Jogger Pants", price:250, cat:"signature", catLabel:"African Print · Jogger pants — Matching set", note:"Cream and tan Sanyan aso oke woven joggers — pairs with the Men's Sanyan Hoodie.", url:"https://horizon.meta.com/avatar/item?id=1805226367360262", img:"assets/mens-sanyan-jogger-pants-meta-20261121.png", imgAlt:"Men's Sanyan Jogger Pants — the finished pants, front view, Meta render"},
+  {name:"Men's Kuba Hoodie", price:250, cat:"signature", catLabel:"African Print · Jogger hoodie — Matching set", note:"Tan and charcoal Kuba status cloth hoodie, nested diamonds — pairs with the Men's Kuba Jogger Pants.", url:"https://horizon.meta.com/avatar/item?id=1683929440193783", img:"assets/mens-kuba-hoodie-meta-20261121.png", imgAlt:"Men's Kuba Hoodie — the finished hoodie, front view, Meta render"},
+  {name:"Men's Kuba Jogger Pants", price:250, cat:"signature", catLabel:"African Print · Jogger pants — Matching set", note:"Tan and charcoal Kuba status cloth joggers, nested diamonds — pairs with the Men's Kuba Hoodie.", url:"https://horizon.meta.com/avatar/item?id=1697754441921381", img:"assets/mens-kuba-jogger-pants-meta-20261121.png", imgAlt:"Men's Kuba Jogger Pants — the finished pants, front view, Meta render"},
 ];
 
 /* ============ Languages ============ */
@@ -3575,6 +3581,9 @@ function render(){
       "Jo Mama G Men's Jogger Top — Olive","Jo Mama G's Jogger Pants — Olive",
       "Jo Mama G Men's Jogger Top — Washed Black","Jo Mama G's Jogger Pants — Washed Black",
       "Jo Mama G Men's Jogger Top — Midnight Navy","Jo Mama G's Jogger Pants — Midnight Navy",
+      "Men's Groundnut Hoodie","Men's Groundnut Jogger Pants",
+      "Men's Sanyan Hoodie","Men's Sanyan Jogger Pants",
+      "Men's Kuba Hoodie","Men's Kuba Jogger Pants",
       ];
     menJoggerOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.joggersmen.appendChild(src.cloneNode(true)); });
   }
