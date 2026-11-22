@@ -3460,6 +3460,61 @@ function kindsOf(it){
 }
 var KINDS_BY_NAME={};
 ITEMS.forEach(function(it){ KINDS_BY_NAME[it.name.toLowerCase()]=kindsOf(it); });
+/* Matching hats and shoes — Catherine's ruling (2026-11-21): a piece with a matching hat
+   or shoes carries a short note in its description and a button under its card that goes
+   straight to the matching piece, because a link inside the note text prints as plain
+   words. The map lives here in the render layer, keyed by the garment's own name, so it
+   follows the card everywhere it stands (home, walls, search, Sets); ITEMS data itself is
+   untouched. Only pairs where BOTH pieces stand as buyable cards are listed, matched by
+   the shared set/family name — the same evidence the set groups in render() are proven
+   by. Families whose hat or shoes piece is display/showcase-only are not paired. */
+var MATCH_OF={
+  "Kente Zigzag Hoodie":{hat:"Kente Zigzag Cap"},
+  "Kente Zigzag Jogger Pants":{hat:"Kente Zigzag Cap"},
+  "Alaari Aso Oke Hoodie":{hat:"Alaari Cap"},
+  "Alaari Aso Oke Jogger Pants":{hat:"Alaari Cap"},
+  "Earth Bogolan Hoodie":{hat:"Earth Cap"},
+  "Earth Bogolan Jogger Pants":{hat:"Earth Cap"},
+  "Earth Bogolan Crew":{hat:"Earth Cap"},
+  "Indigo Bogolan Hoodie":{hat:"Indigo Cap"},
+  "Indigo Bogolan Jogger Pants":{hat:"Indigo Cap"},
+  "Men's Groundnut Hoodie":{hat:"Groundnut Cap"},
+  "Men's Groundnut Jogger Pants":{hat:"Groundnut Cap"},
+  "Men's Sanyan Hoodie":{hat:"Sanyan Cap"},
+  "Men's Sanyan Jogger Pants":{hat:"Sanyan Cap"},
+  "Men's Kuba Hoodie":{hat:"Kuba Cap"},
+  "Men's Kuba Jogger Pants":{hat:"Kuba Cap"},
+  "Cow Print Skinny Jeans":{hat:"Cow Print Cowboy Hat"},
+  "Leopard Print Skinny Jeans":{hat:"Leopard Print Cowboy Hat"},
+  "Tiger Print Skinny Jeans":{hat:"Tiger Print Cowboy Hat"},
+  "Dalmatian Print Skinny Jeans":{hat:"Dalmatian Print Cowboy Hat"},
+  "Cheetah Print Skinny Jeans":{hat:"Cheetah Print Cowboy Hat"},
+  "Giraffe Print Skinny Jeans":{hat:"Giraffe Print Cowboy Hat"},
+  "Zebra Print Skinny Jeans":{hat:"Zebra Print Cowboy Hat"},
+  "Python Print Skinny Jeans":{hat:"Python Print Cowboy Hat"},
+  "Country Class Men's Blazer":{hat:"Country Classy Hat"},
+  "Country Class Dress Pants":{hat:"Country Classy Hat"},
+  "Country Class Top":{hat:"Country Classy Hat"},
+  "Paisley Leather Bottoms":{hat:"Country Classy Hat"},
+  "“One Big Rose” Fitted Tee":{hat:"“Jo Mama” Rose Violet Diamond Hat"},
+  "Rose Violet Diamond Pants":{hat:"“Jo Mama” Rose Violet Diamond Hat"},
+  "Black Satin Rose Scatter Pants":{hat:"“Jo Mama” Rose Violet Diamond Hat"},
+  "Red Snowflake Sweater Dress":{hat:"Red Snowflake Knit Hat"},
+  "Diamond Kintsugi Gown":{shoes:"Diamond Kintsugi Mules"},
+  "Midnight Rose":{shoes:"Midnight Rose Mules"},
+  "Royal Prism":{shoes:"Royal Prism Mules"},
+  "Savanna Noir":{shoes:"Savanna Noir Shoes"},
+  "Jo Mama G Jogger Top — Deep Purple":{shoes:"Jo Mama G Jogger Sneakers — Deep Purple"},
+  "Jo Mama G's Jogger Pants — Deep Purple":{shoes:"Jo Mama G Jogger Sneakers — Deep Purple"},
+  "Jo Mama G Jogger Top — Black":{shoes:"Jo Mama G Jogger Sneakers — Black"},
+  "Jo Mama G's Jogger Pants — Black":{shoes:"Jo Mama G Jogger Sneakers — Black"},
+  "Jo Mama G Jogger Top — Deep Fuchsia":{shoes:"Jo Mama G Jogger Sneakers — Deep Fuchsia"},
+  "Jo Mama G's Jogger Pants — Deep Fuchsia":{shoes:"Jo Mama G Jogger Sneakers — Deep Fuchsia"},
+  "Jo Mama G Jogger Top — Teal":{shoes:"Jo Mama G Jogger Sneakers — Teal"},
+  "Jo Mama G's Jogger Pants — Teal":{shoes:"Jo Mama G Jogger Sneakers — Teal"}
+};
+var ITEM_BY_NAME={};
+ITEMS.forEach(function(it){ if(!ITEM_BY_NAME[it.name]) ITEM_BY_NAME[it.name]=it; });
 function render(){
   var grids={rose:document.querySelector('[data-grid="rose"]'),leggings:document.querySelector('[data-grid="leggings"]'),outfits:document.querySelector('[data-grid="outfits"]'),crystal:document.querySelector('[data-grid="crystal"]'),special:document.querySelector('[data-grid="special"]'),halloween:document.querySelector('[data-grid="halloween"]'),jeans:document.querySelector('[data-grid="jeans"]'),jeansmen:document.querySelector('[data-grid="jeans-men"]'),trousers:document.querySelector('[data-grid="trousers-women"]'),trousersmen:document.querySelector('[data-grid="trousers-men"]'),joggerswomen:document.querySelector('[data-grid="joggers-women"]'),joggersmen:document.querySelector('[data-grid="joggers-men"]'),corduroyswomen:document.querySelector('[data-grid="corduroys-women"]'),dresses:document.querySelector('[data-grid="dresses"]'),hats:document.querySelector('[data-grid="hats"]'),shoes:document.querySelector('[data-grid="shoes"]'),hishers:document.querySelector('[data-grid="hishers"]'),animal:document.querySelector('[data-grid="animal"]'),topswomen:document.querySelector('[data-grid="tops-women"]'),topsmen:document.querySelector('[data-grid="tops-men"]'),coats:document.querySelector('[data-grid="coats"]'),houndstooth:document.querySelector('[data-grid="houndstooth"]'),suitsmen:document.querySelector('[data-grid="suits-men"]'),suitswomen:document.querySelector('[data-grid="suits-women"]'),signature:document.querySelector('[data-grid="signature"]')};
   for(var gk in grids){ if(grids[gk]) grids[gk].innerHTML=""; }
@@ -3473,6 +3528,13 @@ function render(){
     var card=document.createElement("article");
     card.className="card"; card.setAttribute("data-cat",it.cat); card.setAttribute("data-name",it.name.toLowerCase()); card.setAttribute("data-line",lineOf(it));
     var note=(d.notes&&d.notes[idx])||it.note;
+    /* The matching-hat/shoes note (Catherine, 2026-11-21): appended here, at build time,
+       unless the note already names a match — the gown notes already say "Matching shoes
+       available — …", so those are left exactly as written. */
+    var match=MATCH_OF[it.name];
+    if(match && !/matching/i.test(note||"")){
+      note=(note||"").replace(/\s+$/,"")+((note)?" ":"")+((match.hat&&match.shoes)?"Matching hat and shoes available.":(match.hat?"Matching hat available.":"Matching shoes available."));
+    }
     var catLabel=(d.cat&&d.cat[it.catLabel])||it.catLabel;
     var priceHtml, actions;
     if(it.parts){
@@ -3483,6 +3545,13 @@ function render(){
         actions = it.url
           ? '<a class="mini-btn primary" href="'+it.url+'" target="_blank" rel="noopener">'+L("openHorizon")+'</a><button class="mini-btn" type="button" data-copy="'+it.url+'">'+L("copyLink")+'</button>'
           : '<span class="pending">'+L("askLink")+'</span>';
+    }
+    /* The matching-piece buttons (Catherine, 2026-11-21): plain mini-btns in the card's
+       own action row, linking to the matching hat's / shoes' own Horizon address — the
+       same address their own cards use. */
+    if(match){
+      if(match.hat && ITEM_BY_NAME[match.hat] && ITEM_BY_NAME[match.hat].url) actions+='<a class="mini-btn" href="'+ITEM_BY_NAME[match.hat].url+'" target="_blank" rel="noopener">See the matching hat</a>';
+      if(match.shoes && ITEM_BY_NAME[match.shoes] && ITEM_BY_NAME[match.shoes].url) actions+='<a class="mini-btn" href="'+ITEM_BY_NAME[match.shoes].url+'" target="_blank" rel="noopener">See the matching shoes</a>';
     }
     var imgHtml = it.img ? '<button type="button" class="card-view-btn" aria-label="See the whole piece: '+esc(it.name)+'"><img class="card-img" src="'+it.img+'" alt="'+esc(it.imgAlt||it.name)+'"'+(it.imgStyle?' style="'+it.imgStyle+'"':'')+'</button>' : '';
     card.innerHTML=imgHtml+'<div class="card-top"><h3>'+esc(it.name)+'</h3>'+priceHtml+'</div><div class="cat">'+esc(catLabel)+'</div><p class="note">'+esc(note)+'</p><div class="card-actions">'+actions+'</div>';
