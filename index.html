@@ -3345,10 +3345,16 @@ var MENS_DISTRESSED_JEANS=["Distressed Jeans — Medium Wash","Distressed Jeans 
    than the word Men's, so they are named here as men's-line pieces, the same way the
    Country Class Dress Pants are named below. */
 var MEN_SUIT_PIECES=["Cream Vine Jacket","Cream Vine Trousers","Black Vine Diamond Jacket","Black Vine Diamond Trousers","Black Bolero Jacket","Black Bolero Pants","Black Tuxedo Shirt Top","Black Tuxedo Red Ruffle Top","Black Tuxedo White Ruffle Top","Black Tuxedo Trousers","Crystal Crane Blazer","Crystal Origami Quilted Jacket"];
+/* The caps of the men's African sets (Catherine's settled lines, Nov 21, 2026: Groundnut,
+   Sanyan and Kuba are the men's sets) — their labels carry their set names rather than the
+   word Men's, so they are named here as men's-line pieces, the same way the men's suit
+   pieces are named above. */
+var MEN_SET_CAPS=["Groundnut Cap","Sanyan Cap","Kuba Cap"];
 function lineOf(it){
   var n=it.name||"", cl=it.catLabel||"";
   if(cl.indexOf("Men's")>-1 || n.indexOf("Men's")>-1) return "men";
   if(MEN_SUIT_PIECES.indexOf(n)>-1) return "men";
+  if(MEN_SET_CAPS.indexOf(n)>-1) return "men";
   if(n==="Country Class Dress Pants") return "men";
   if(n.indexOf("Warlock")===0) return "men";
   if(n==="Bone Beau One-Piece") return "men";
