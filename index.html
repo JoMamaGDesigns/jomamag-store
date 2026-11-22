@@ -3380,7 +3380,31 @@ var KIND_OVERRIDES={"atlas":"dresses","chaos's hoodie":"tops",
   "deep violet jacket":"suits","deep violet pants":"suits",
   "black bolero jacket":"suits","black bolero pants":"suits",
   "black tuxedo shirt top":"suits","black tuxedo red ruffle top":"suits","black tuxedo white ruffle top":"suits","black tuxedo trousers":"suits",
-  "crystal origami quilted jacket":"suits"};
+  "crystal origami quilted jacket":"suits",
+  /* Catherine's set law (2026-11-21): a set piece lives ONLY with its set — never also on a
+     garment-type wall, or the shop shows duplicates; a buyer who wants just the pants or
+     just the top buys it right where the set stands. Suit-set pieces pin to Suits; every
+     other set piece pins to "sets", so it stands with its set (its home section and the
+     Sets view) and on no garment wall. Matching hats and shoes keep their Hats/Shoes
+     walls — her settled exception — so no hat or shoe is pinned here. */
+  "country class dress pants":"suits","crystal origami trousers":"suits",
+  "houndstooth fitted pants":"suits","black ponte pants":"suits",
+  "thanksgiving harvest jacket":"suits","thanksgiving harvest pants":"suits",
+  "royal prism monogram pants":"sets","royal prism monogram long-sleeve":"sets",
+  "crimson winter pants":"sets","cream and emerald winter pants":"sets",
+  "crimson vine black pants":"sets","crimson vine black tee":"sets",
+  "pretty pants":"sets","paisley leather bottoms":"sets","country class top":"sets",
+  "pink rose's delight top":"sets","pink rose's delight skirt":"sets","roses in the dark 2 top":"sets",
+  "american eagle embroidered top":"sets","warlock pants":"sets",
+  "street king crown shirt":"sets","street king stone crown shirt":"sets",
+  "rudolph christmas pajama top — men":"sets","rudolph christmas pajama pants — men":"sets",
+  "rudolph christmas pajama top — women":"sets","rudolph christmas pajama pants — women":"sets",
+  "snowman christmas pajama top — men":"sets","snowman christmas pajama pants — men":"sets",
+  "snowman christmas pajama top — women":"sets","snowman christmas pajama pants — women":"sets",
+  "cow print skinny jeans":"sets","leopard print skinny jeans":"sets","tiger print skinny jeans":"sets",
+  "dalmatian print skinny jeans":"sets","cheetah print skinny jeans":"sets","giraffe print skinny jeans":"sets",
+  "zebra print skinny jeans":"sets","python print skinny jeans":"sets",
+  "diamond kintsugi gown":"sets","midnight rose":"sets","royal prism":"sets","savanna noir":"sets"};
 function kindOf(it){
   /* Catherine's category ruling: every jogger piece files under Joggers, and the corduroys get
      their own Corduroys category — never lumped in with the trousers. The Jeans tab holds
@@ -3428,8 +3452,10 @@ function kindsOf(it){
   if(/matching set|his & hers/i.test(it.catLabel||"") && ks.indexOf("sets")===-1) ks.push("sets");
   /* The skirts stand on the Dresses wall — its own lede reads "gowns, dresses and skirts" —
      so a skirt files under Dresses too; otherwise the Dresses tap hides the very skirts
-     standing on that wall (the button read 28 while the wall holds 30 pieces). */
-  if(/skirt/i.test(it.name||"") && ks.indexOf("dresses")===-1) ks.push("dresses");
+     standing on that wall (the button read 28 while the wall holds 30 pieces).
+     A skirt that belongs to a set is the exception under Catherine's set law
+     (2026-11-21): it lives with its set only and takes no Dresses showing. */
+  if(/skirt/i.test(it.name||"") && ks.indexOf("dresses")===-1 && ks.indexOf("sets")===-1) ks.push("dresses");
   return ks;
 }
 var KINDS_BY_NAME={};
@@ -3624,12 +3650,11 @@ function render(){
     var womenTrouserOrder=[
       "Women's Slacks — Light Gray","Women's Slacks — Dark Gray","Women's Slacks — Deep Burgundy","Women's Slacks — Turquoise","Women's Slacks — Dark Green","Women's Slacks — Yellow","Women's Slacks — White","Women's Slacks — Burgundy","Women's Slacks — Chocolate","Women's Slacks — Khaki","Women's Slacks — Navy","Women's Slacks — Charcoal","Women's Slacks — Black",
       "Geometric Column Pants — White","Geometric Column Pants — Cream",
-      "White Leather Pants","Crimson Winter Pants","Cream and Emerald Winter Pants",
+      "White Leather Pants",
       "Tropical Sunset Flare Pants","Mudcloth Flare Pants","Cherry Blossom Flare Pants","Emerald Garden Flare Pants","Crimson Tiger Flare Pants",
-      "Zebra Pineapple Patchwork Pants","Houndstooth Fitted Pants","Black Ponte Pants",
-      "Ruby, Black, and Smoke Pants","Royal Prism Monogram Pants",
-      "Midnight Merlot Sparkle Pants","Roses After Dark Bottoms",
-      "Black Lace Cream-Waist Leggings","Crimson Vine Black Pants"
+      "Zebra Pineapple Patchwork Pants",
+      "Ruby, Black, and Smoke Pants",
+      "Midnight Merlot Sparkle Pants","Roses After Dark Bottoms"
     ];
     womenTrouserOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.trousers.appendChild(src.cloneNode(true)); });
   }
@@ -3637,17 +3662,16 @@ function render(){
     var menTrouserOrder=[
       "Men's Slacks — Black","Men's Slacks — Charcoal","Men's Slacks — Navy","Men's Slacks — Khaki","Men's Slacks — Chocolate","Men's Slacks — Burgundy","Men's Slacks — White","Men's Slacks — Dark Green","Men's Slacks — Yellow","Men's Slacks — Turquoise","Men's Slacks — Deep Burgundy","Men's Slacks — Light Gray","Men's Slacks — Dark Gray",
       "American Eagle Embroidered Pants","NorCal Ice-Warrior Pants",
-      "Warlock Pants","Crystal Origami Trousers"
     ];
     menTrouserOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.trousersmen.appendChild(src.cloneNode(true)); });
   }
   if(grids.dresses){
     var dressOrder=[
-      "Diamond Kintsugi Gown","Radiant Medallion Gown — One Seal","Midnight Rose","Royal Prism",
-      "Tiger Noir","Atlas","Savanna Noir","The Black Widow's Lace","Royal Purple Widow's Lace Gown","Purple Violet Widow's Lace Gown","Garnet Wine Widow's Lace Gown","Midnight Blue Widow's Lace Gown","Emerald Widow's Lace Gown",
+      "Radiant Medallion Gown — One Seal",
+      "Tiger Noir","Atlas","The Black Widow's Lace","Royal Purple Widow's Lace Gown","Purple Violet Widow's Lace Gown","Garnet Wine Widow's Lace Gown","Midnight Blue Widow's Lace Gown","Emerald Widow's Lace Gown",
       "Moonlit Web Gown","Highland Cow Chic Dress","Olive Suede Fringe Dress","Kitenge Crescent Dress",
       "English Gold Fan Dress","Big Star Ankara Dress","Baby Moo — Grazer & Speckles Dress",
-      "Pink Rose's Delight Skirt","Elegant Long Red Satin Skirt","Ruby Harvest Gown",
+      "Elegant Long Red Satin Skirt","Ruby Harvest Gown",
       "Nordic Snowflake Sweater Dress","Black Sunburst Dress",
       "Red Snowflake Sweater Dress","Snowman Sweater Dress","Christmas Tree Sweater Dress","Red and White Snowflake Turtleneck Dress",
       "Gold Glitter Gown"
@@ -3707,15 +3731,14 @@ function render(){
      convention as the walls above. No piece is left standing nowhere. */
   if(grids.topswomen){
     var womenTopOrder=[
-      "Jo Mama Says: I Know Something You Don't","Pink Rose's Delight Top","Roses in the Dark 2 Top",
-      "Royal Prism Monogram Long-Sleeve","Purple Roses in the Mist","Petal Noir Ribbed Top",
+      "Jo Mama Says: I Know Something You Don't",
+      "Purple Roses in the Mist","Petal Noir Ribbed Top",
       "Candy Corn Cashmere Top","Ruby Radiance Top","The Blammer",
       "Tiger in Chains","Peacock Royale",
       "Wilson’s Bird-of-Paradise Tee","Resplendent Quetzal Tee","Himalayan Monal Tee",
       "Victoria Crowned Pigeon Tee","Andean Rockbird Tee","Jeweled Hummingbird Tee",
       "Olive Portrait Tee","Dragon Fruit Portrait Tee","Lotus Portrait Tee","Hibiscus Portrait Tee",
       "Dahlia Portrait Tee","Sakura Portrait Tee","Cornflower Portrait Tee",
-      "Crimson Vine Black Tee",
       "She Rose Black Tee","She Rose Purple Tee","She Rose Blue Tee","She Rose Peach Tee",
       "Cream Velor Corset Top","Cut-Across Corset Top",
       "Black + Gold Blazer Top","Black & White Swirl Wrap Top"
@@ -3724,7 +3747,7 @@ function render(){
   }
   if(grids.topsmen){
     var menTopOrder=[
-      "American Eagle Embroidered Top","Chaos's Hoodie","Street King Crown Shirt","Street King Stone Crown Shirt",
+      "Chaos's Hoodie",
       "NorCal Ice-Warrior Top","Wally's Coin Shirt","Justin Time Top","J. MacNasty Top",
       "Nobody Cares What You Folded Top",
       "Too Blessed to Be Stressed. Too Tired to Care. Top","Built Different. Mostly From Pizza. Top",
