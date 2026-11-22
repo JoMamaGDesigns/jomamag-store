@@ -184,6 +184,13 @@ section.headliner{padding-top:36px}
 .try-line{margin-top:18px;font-family:"Cormorant Garamond",serif;font-size:21px;font-style:italic;color:var(--gold-bright)}
 .notice{margin-top:20px;background:var(--teal-soft);border:1px solid var(--teal);border-radius:14px;padding:18px 20px}
 .notice strong{color:var(--teal-bright)}
+/* Meta Credits callout in the How to Buy section — mirrors the .notice teal callout,
+   under its own class so the language walker's first-match ".notice" and "a.btn-gold"
+   selectors keep landing on the section's original notice and storefront button. */
+.credits-callout{margin-top:20px;background:var(--teal-soft);border:1px solid var(--teal);border-radius:14px;padding:18px 20px}
+.credits-callout h3{color:var(--teal-bright);margin:0 0 8px}
+.credits-callout p{margin:0}
+.credits-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 
 /* Hashtags */
 .hash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:18px}
@@ -722,6 +729,15 @@ body.gate-open{overflow:hidden}
     <h2 id="buy-h"><svg class="sec-mask" aria-hidden="true"><use href="#mg-mask"/></svg>How to buy — the way that works</h2>
     <div class="gold-rule"></div>
     <p class="lede">Every confirmed sale in this shop’s history started the same way: Jo Mama G sent the buyer a direct link, they tapped it, and bought the piece. Follow that door — it’s the proven one.</p>
+    <div class="credits-callout">
+      <h3>Need Meta Credits?</h3>
+      <p>Every price in this shop is in Meta Credits. You buy Credits inside Meta Horizon Worlds — in your headset, or in the Meta Horizon app on your phone. Open Worlds, tap Meta Credits, pick a pack, and pay with your usual payment method. Packs start at 300 Credits for $2.99, and the bigger packs add bonus Credits. Then come back here and tap the piece you want.</p>
+      <div class="credits-btns">
+        <a class="btn btn-purple" href="http://itunes.apple.com/app/id1366478176" target="_blank" rel="noopener">Meta Horizon app — iPhone</a>
+        <a class="btn btn-purple" href="https://play.google.com/store/apps/details?id=com.oculus.twilight&gl=US" target="_blank" rel="noopener">Meta Horizon app — Android</a>
+        <a class="btn btn-purple" href="https://www.meta.com/help/quest/1543535462925767/" target="_blank" rel="noopener">Meta’s guide to Meta Credits</a>
+      </div>
+    </div>
     <div class="panel">
       <div class="steps">
         <div class="step"><div class="step-num">1</div><h3>Tap the link</h3><p>On your phone or in your headset, tap <strong>“Click here for more details”</strong> on the piece you want here — or the link Jo Mama G sends you in chat. Use a phone with the Meta Horizon app installed, or your headset.</p></div>
@@ -3976,6 +3992,17 @@ function clearSearchBoxes(){
   if(searchInput) searchInput.value="";
   if(topSearchInput) topSearchInput.value="";
 }
+/* A category tap is a fresh start too, the same doctrine as the search box: it clears
+   any active filter chip, so the category wall always shows its full wall. Without this,
+   a chip left on (Animal sets) silently intersected with the tapped category — the
+   Dresses tap showed "0 pieces" and the collapsed page threw Catherine back to the top
+   of the page (2026-11-21). The chip handlers are deliberately NOT changed: a chip
+   tapped inside its own browsing context (home, or the Sets view) still narrows within
+   that context, exactly as before. */
+function clearFilterChip(){
+  currentFilter="all";
+  chips.forEach(function(c){ c.setAttribute("aria-pressed", c.getAttribute("data-filter")==="all"?"true":"false"); });
+}
 function syncSearchFrom(src){
   var v=src?src.value:"";
   if(searchInput && searchInput!==src) searchInput.value=v;
@@ -4153,6 +4180,7 @@ function buildSubbar(line){
       var sr=bar.querySelector(".splitrow");
       if(sr) sr.style.display = (kind==="tops-family"||kind==="tops"||kind==="tees") ? "flex" : "none";
       clearSearchBoxes();
+      clearFilterChip();
       pendingScroll=true;
       applyFilter();
     });
@@ -4180,6 +4208,7 @@ function buildSubbar(line){
         currentKind=kind;
         bar.querySelectorAll("[data-kind]").forEach(function(x){ x.setAttribute("aria-pressed", x===b?"true":"false"); });
         clearSearchBoxes();
+        clearFilterChip();
         pendingScroll=true;
         applyFilter();
       });
