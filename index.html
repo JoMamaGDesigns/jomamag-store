@@ -383,19 +383,10 @@ body.gate-open{overflow:hidden}
 </div>
 
 
-<div class="wrap">
-  <!-- ROSE CAPSULE -->
-  <section data-section="rose" aria-labelledby="rose-h">
-    <div class="sec-head">
-      <div>
-        <h2 id="rose-h"><svg class="sec-mask" aria-hidden="true"><use href="#mg-mask"/></svg>The Rose Capsule</h2>
-        <div class="gold-rule"></div>
-        <p class="lede">The newest line, leading the shop — four rose-and-diamond pieces in Rose Violet: one big rose on a fitted tee, the signed diamond hat, the rose violet diamond pants, and the black satin rose-scatter pants.</p>
-      </div>
-    </div>
-    <div class="grid" data-grid="rose"></div>
-  </section>
-</div>
+<!-- THE ROSE CAPSULE section was removed at Catherine's word (2026-11-21: "Remove the rose
+     capsule heading from the top links"). Its four pieces keep their catalogue entries and
+     stand in their own categories — the fitted tee under Tops, the diamond hat under Hats,
+     the two pants under Trousers — gathered onto those walls by the wall top-up in render(). -->
 
 <div class="wrap">
   <!-- LEGGING SETS CORNER — the top sellers, gathered into their own corner: true legging
@@ -3754,13 +3745,13 @@ function render(){
      their own category wall (the women's tops wall named 33 of the family's pieces).
      Order-list pieces keep their places; any other card of the kind is appended in
      catalogue order. The tab count, the count line and the wall then count one set. */
-  var WALL_KINDS={"tops-women":{line:"women",kinds:["tops","tees"]},"tops-men":{line:"men",kinds:["tops","tees"]},
-    "dresses":{line:"women",kinds:["dresses"]},"trousers-women":{line:"women",kinds:["trousers"]},
-    "trousers-men":{line:"men",kinds:["trousers"]},"corduroys-women":{line:"women",kinds:["corduroys"]},
-    "jeans":{line:"women",kinds:["jeans"]},"jeans-men":{line:"men",kinds:["jeans"]},
-    "joggers-women":{line:"women",kinds:["joggers"]},"joggers-men":{line:"men",kinds:["joggers"]},
+  var WALL_KINDS={"topswomen":{line:"women",kinds:["tops","tees"]},"topsmen":{line:"men",kinds:["tops","tees"]},
+    "dresses":{line:"women",kinds:["dresses"]},"trousers":{line:"women",kinds:["trousers"]},
+    "trousersmen":{line:"men",kinds:["trousers"]},"corduroyswomen":{line:"women",kinds:["corduroys"]},
+    "jeans":{line:"women",kinds:["jeans"]},"jeansmen":{line:"men",kinds:["jeans"]},
+    "joggerswomen":{line:"women",kinds:["joggers"]},"joggersmen":{line:"men",kinds:["joggers"]},
     "shoes":{line:null,kinds:["shoes"]},"hats":{line:null,kinds:["hats"]},
-    "suits-women":{line:"women",kinds:["suits"]},"suits-men":{line:"men",kinds:["suits"]}};
+    "suitswomen":{line:"women",kinds:["suits"]},"suitsmen":{line:"men",kinds:["suits"]}};
   Object.keys(WALL_KINDS).forEach(function(gk){
     var grid=grids[gk]; if(!grid) return;
     var spec=WALL_KINDS[gk];
@@ -3941,6 +3932,14 @@ function applyFilter(){
     var any=false; sec.querySelectorAll(".card").forEach(function(c){ if(!c.classList.contains("hidden")) any=true; });
     sec.classList.toggle("hidden",!any);
   });
+  /* In a walled category view the count line counts the wall itself — the pieces the
+     shopper can actually see standing there — so the tab, the count line and the wall
+     agree by construction, whatever strays of the kind stand in other (now hidden)
+     sections. */
+  if(wallKey){
+    var wallSec=document.querySelector('[data-section="'+wallKey+'"]');
+    if(wallSec){ var wseen={}; visible=0; wallSec.querySelectorAll(".card").forEach(function(c){ if(c.classList.contains("hidden")) return; var wn=c.getAttribute("data-name"); if(wn && !wseen[wn]){ wseen[wn]=1; visible++; } }); }
+  }
   /* The showcase and the standing invitation blocks are not search results: while a search
      is typed, showcase cards that don't match the search hide too (the Spi-Dheer-Man
      Joggers stay for a "joggers" search), the showcase itself hides when nothing in it
