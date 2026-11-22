@@ -3571,7 +3571,10 @@ function render(){
       "Jo Mama G Jogger Top — Black","Jo Mama G's Jogger Pants — Black","Jo Mama G Jogger Sneakers — Black",
       "Jo Mama G Jogger Top — Deep Fuchsia","Jo Mama G's Jogger Pants — Deep Fuchsia","Jo Mama G Jogger Sneakers — Deep Fuchsia",
       "Jo Mama G Jogger Top — Teal","Jo Mama G's Jogger Pants — Teal","Jo Mama G Jogger Sneakers — Teal",
-      "Kente Zigzag Hoodie","Kente Zigzag Jogger Pants","Kente Zigzag Cap"
+      "Kente Zigzag Hoodie","Kente Zigzag Jogger Pants","Kente Zigzag Cap",
+      "Alaari Aso Oke Hoodie","Alaari Aso Oke Jogger Pants",
+      "Earth Bogolan Hoodie","Earth Bogolan Jogger Pants","Earth Bogolan Crew",
+      "Indigo Bogolan Hoodie","Indigo Bogolan Jogger Pants"
     ];
     womenJoggerOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.joggerswomen.appendChild(src.cloneNode(true)); });
   }
@@ -3788,7 +3791,18 @@ var REDUCED_MOTION=false;
 try{ REDUCED_MOTION=window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
 function scrollToFirstResult(){
   var target=null;
-  document.querySelectorAll("[data-section]").forEach(function(sec){
+  /* When a category button did the narrowing, land on that category's OWN wall for the
+     line — not on an earlier set section that merely holds one of its pieces. (The Tops
+     tap landed on Outfits, whose one set top was all Catherine saw: "only this comes up.") */
+  if(typeof currentKind!=="undefined" && currentKind!=="all"){
+    var wallFor={women:{dresses:"dresses",tops:"tops-women",trousers:"trousers-women",corduroys:"corduroys-women",jeans:"jeans",joggers:"joggers-women",shoes:"shoes",suits:"suits-women"},men:{tops:"tops-men",trousers:"trousers-men",jeans:"jeans-men",joggers:"joggers-men",shoes:"shoes",suits:"suits-men"}};
+    var wn=(wallFor[currentLine]||{})[currentKind];
+    if(wn){
+      var wsec=document.querySelector('[data-section="'+wn+'"]');
+      if(wsec && !wsec.classList.contains("hidden") && wsec.querySelector(".card:not(.hidden)")) target=wsec;
+    }
+  }
+  if(!target) document.querySelectorAll("[data-section]").forEach(function(sec){
     if(target || sec.classList.contains("hidden")) return;
     if(sec.querySelector(".card:not(.hidden)")) target=sec;
   });
