@@ -3413,7 +3413,14 @@ function kindsOf(it){
      the Suits category never shows a lone top with no bottoms. */
   if((it.name||"")==="Country Class Dress Pants" && ks.indexOf("suits")===-1) ks.push("suits");
   if(/mules|slingbacks|sneakers|shoes|high-tops/i.test(hay) && ks.indexOf("shoes")===-1) ks.push("shoes");
+  /* Hats, caps and beanies file under Hats as well as wherever else they belong (the Kente
+     cap keeps its Joggers place) — the hats wall had no tab at all before this. */
+  if(/\bhat\b|\bcap\b|beanie/i.test(it.name||"") && ks.indexOf("hats")===-1) ks.push("hats");
   if(/matching set|his & hers/i.test(it.catLabel||"") && ks.indexOf("sets")===-1) ks.push("sets");
+  /* The skirts stand on the Dresses wall — its own lede reads "gowns, dresses and skirts" —
+     so a skirt files under Dresses too; otherwise the Dresses tap hides the very skirts
+     standing on that wall (the button read 28 while the wall holds 30 pieces). */
+  if(/skirt/i.test(it.name||"") && ks.indexOf("dresses")===-1) ks.push("dresses");
   return ks;
 }
 var KINDS_BY_NAME={};
@@ -3795,19 +3802,29 @@ function scrollToFirstResult(){
      line — not on an earlier set section that merely holds one of its pieces. (The Tops
      tap landed on Outfits, whose one set top was all Catherine saw: "only this comes up.") */
   if(typeof currentKind!=="undefined" && currentKind!=="all"){
-    var wallFor={women:{dresses:"dresses",tops:"tops-women",trousers:"trousers-women",corduroys:"corduroys-women",jeans:"jeans",joggers:"joggers-women",shoes:"shoes",suits:"suits-women"},men:{tops:"tops-men",trousers:"trousers-men",jeans:"jeans-men",joggers:"joggers-men",shoes:"shoes",suits:"suits-men"}};
+    var wallFor={women:{dresses:"dresses","tops-family":"tops-women",tops:"tops-women",tees:"tops-women",trousers:"trousers-women",corduroys:"corduroys-women",jeans:"jeans",joggers:"joggers-women",shoes:"shoes",hats:"hats",suits:"suits-women"},men:{"tops-family":"tops-men",tops:"tops-men",tees:"tops-men",trousers:"trousers-men",jeans:"jeans-men",joggers:"joggers-men",shoes:"shoes",hats:"hats",suits:"suits-men"}};
     var wn=(wallFor[currentLine]||{})[currentKind];
     if(wn){
       var wsec=document.querySelector('[data-section="'+wn+'"]');
       if(wsec && !wsec.classList.contains("hidden") && wsec.querySelector(".card:not(.hidden)")) target=wsec;
     }
   }
-  if(!target) document.querySelectorAll("[data-section]").forEach(function(sec){
-    if(target || sec.classList.contains("hidden")) return;
-    if(sec.querySelector(".card:not(.hidden)")) target=sec;
-  });
+  if(!target){
+    /* No dedicated wall for this kind (Tees, Sets): land on the FULLEST shelf — the section
+       holding the most showing pieces — never on a lead-in section with a single stray
+       match (the Tees tap stranded Catherine on the Rose capsule's one tee). */
+    var bestCount=0;
+    document.querySelectorAll("[data-section]").forEach(function(sec){
+      if(sec.classList.contains("hidden")) return;
+      var n=sec.querySelectorAll(".card:not(.hidden)").length;
+      if(n>bestCount){ bestCount=n; target=sec; }
+    });
+  }
   if(!target) target=document.querySelector(".card:not(.hidden)");
-  if(target && target.scrollIntoView) target.scrollIntoView({behavior:REDUCED_MOTION?"auto":"smooth",block:"start"});
+  /* The jump is instant, never a smooth glide: on a 300-piece page the glide ran for
+     seconds past unrelated shelves, and one touch from Catherine cancelled it mid-way and
+     left her stranded among pieces she never asked for — the Dresses "nothing comes up". */
+  if(target && target.scrollIntoView) target.scrollIntoView({behavior:"auto",block:"start"});
 }
 var chips=document.querySelectorAll("[data-filter]");
 /* ONE search box in the whole store — the field pinned in the top bar — and ONE piece
@@ -3837,6 +3854,7 @@ function syncSearchFrom(src){
   chips.forEach(function(c){ c.setAttribute("aria-pressed", c.getAttribute("data-filter")==="all"?"true":"false"); });
   currentKind="all";
   document.querySelectorAll(".subbar [data-kind]").forEach(function(x){ x.setAttribute("aria-pressed", x.getAttribute("data-kind")==="all"?"true":"false"); });
+  document.querySelectorAll(".splitrow").forEach(function(r){ r.style.display="none"; });
   applyFilter();
 }
 /* Simple plural tolerance for search: a search word and a card word match when one is the
@@ -3869,7 +3887,8 @@ function applyFilter(){
   document.querySelectorAll(".card").forEach(function(card){
     var okCat = currentFilter==="all" || card.getAttribute("data-cat")===currentFilter;
     var okLine = qWords.length>0 || card.getAttribute("data-line")===currentLine || card.getAttribute("data-line")==="both";
-    var okKind = currentKind==="all" || (KINDS_BY_NAME[card.getAttribute("data-name")]||[]).indexOf(currentKind)>-1;
+    var cardKinds = KINDS_BY_NAME[card.getAttribute("data-name")]||[];
+    var okKind = currentKind==="all" || cardKinds.indexOf(currentKind)>-1 || (currentKind==="tops-family" && (cardKinds.indexOf("tops")>-1 || cardKinds.indexOf("tees")>-1));
     var okQ = true;
     if(qWords.length){
       var hay=card.getAttribute("data-name")+" "+card.textContent.toLowerCase();
@@ -3898,6 +3917,17 @@ function applyFilter(){
       var vstems={};
       vhay.split(/[^a-z0-9']+/).forEach(function(hw){ if(hw) vstems[stemWord(hw)]=1; });
       showV=qWords.every(function(w,i){ return vhay.indexOf(w)>-1 || !!vstems[qStems[i]]; });
+    } else if(currentKind!=="all"){
+      /* A category view is a narrowed view: display-only showcase pieces step aside, the
+         same way they do for a search — except a buyable showcase piece that belongs to
+         the tapped category in this line (the Ruby Harvest Gown under Dresses). */
+      var vn=(vc.getAttribute("data-name")||"").toLowerCase();
+      var vk=KINDS_BY_NAME[vn]||[];
+      var vit=null;
+      ITEMS.forEach(function(it){ if(it.name.toLowerCase()===vn) vit=it; });
+      showV = vk.indexOf(currentKind)>-1 && (!vit || lineOf(vit)===currentLine);
+    } else if(currentFilter!=="all"){
+      showV=false;
     }
     vc.classList.toggle("hidden",!showV);
   });
@@ -3905,10 +3935,10 @@ function applyFilter(){
   if(sc){
     var anySc=false;
     sc.querySelectorAll(".card,.vip-card").forEach(function(c){ if(!c.classList.contains("hidden")) anySc=true; });
-    sc.classList.toggle("hidden", searching && !anySc);
+    sc.classList.toggle("hidden", !anySc);
   }
   document.querySelectorAll(".soon-band, section[aria-labelledby='sr-invite-h']").forEach(function(el){
-    el.classList.toggle("hidden",searching);
+    el.classList.toggle("hidden",searching || currentKind!=="all" || currentFilter!=="all");
   });
   /* His & Hers pair headings: a heading whose whole pair is filtered out hides too, so a
      category view never shows a pair's name with no pieces under it. */
@@ -3930,7 +3960,7 @@ function applyFilter(){
   if(!q){
     if(currentKind!=="all" && typeof KIND_DEFS!=="undefined" && KIND_DEFS[currentLine]){
       KIND_DEFS[currentLine].forEach(function(d){ if(d[0]===currentKind) filterDesc=d[1]; });
-      if(!filterDesc) filterDesc=currentKind;
+      if(!filterDesc) filterDesc = currentKind==="tops"?"Tops":currentKind==="tees"?"Tees":currentKind;
     } else if(currentFilter!=="all"){
       var fc=document.querySelector('[data-filter="'+currentFilter+'"]');
       filterDesc=fc?fc.textContent.trim():"";
@@ -3953,8 +3983,8 @@ if(topSearchInput) topSearchInput.addEventListener("input",function(){ syncSearc
 /* Category sub-tabs — the second level inside each line tab. Only kinds that have at least
    one card in that line get a sub-tab; "All" shows the whole line exactly as before. */
 var KIND_DEFS={
-  women:[["dresses","Dresses"],["tops","Tops"],["tees","Tees"],["trousers","Trousers"],["corduroys","Corduroys"],["jeans","Jeans"],["joggers","Joggers"],["shoes","Shoes"],["suits","Suits"],["sets","Sets"]],
-  men:[["tops","Tops"],["tees","Tees"],["trousers","Trousers"],["jeans","Jeans"],["joggers","Joggers"],["shoes","Shoes"],["suits","Suits"],["sets","Sets"]]
+  women:[["dresses","Dresses & Skirts"],["tops-family","Tops"],["trousers","Trousers"],["corduroys","Corduroys"],["jeans","Jeans"],["joggers","Joggers"],["shoes","Shoes"],["hats","Hats"],["suits","Suits"],["sets","Sets"]],
+  men:[["tops-family","Tops"],["trousers","Trousers"],["jeans","Jeans"],["joggers","Joggers"],["shoes","Shoes"],["hats","Hats"],["suits","Suits"],["sets","Sets"]]
 };
 var subbars={women:document.getElementById("subbarWomen"),men:document.getElementById("subbarMen")};
 function buildSubbar(line){
@@ -3974,6 +4004,8 @@ function buildSubbar(line){
     b.addEventListener("click",function(){
       currentKind=kind;
       bar.querySelectorAll("[data-kind]").forEach(function(x){ x.setAttribute("aria-pressed", x===b?"true":"false"); });
+      var sr=bar.querySelector(".splitrow");
+      if(sr) sr.style.display = (kind==="tops-family"||kind==="tops"||kind==="tees") ? "flex" : "none";
       clearSearchBoxes();
       pendingScroll=true;
       applyFilter();
@@ -3981,7 +4013,38 @@ function buildSubbar(line){
     bar.appendChild(b);
   }
   addBtn("all","All",lineTotal);
-  KIND_DEFS[line].forEach(function(d){ if(counts[d[0]]) addBtn(d[0],d[1],counts[d[0]]); });
+  KIND_DEFS[line].forEach(function(d){
+    var c = d[0]==="tops-family" ? (counts.tops||0)+(counts.tees||0) : counts[d[0]];
+    if(c) addBtn(d[0],d[1],c);
+  });
+  /* The Tops split — Catherine's shape (2026-11-21): ONE Tops tab that opens into two,
+     Tops and Tees, so the family stands together first and splits only on request. The
+     split row lives under the main bar and shows only while a tops-family kind is active. */
+  var famN=(counts.tops||0)+(counts.tees||0);
+  if(famN){
+    var row=document.createElement("div");
+    row.className="splitrow";
+    row.style.cssText="display:none;gap:8px;flex-wrap:wrap;margin-top:8px;width:100%";
+    function splitBtn(kind,label,count){
+      var b=document.createElement("button");
+      b.type="button"; b.className="chip sub-chip"; b.setAttribute("data-kind",kind);
+      b.setAttribute("aria-pressed", currentKind===kind?"true":"false");
+      b.innerHTML=esc(label)+(count? ' <span class="tab-count">('+count+')</span>' : '');
+      b.addEventListener("click",function(){
+        currentKind=kind;
+        bar.querySelectorAll("[data-kind]").forEach(function(x){ x.setAttribute("aria-pressed", x===b?"true":"false"); });
+        clearSearchBoxes();
+        pendingScroll=true;
+        applyFilter();
+      });
+      row.appendChild(b);
+    }
+    splitBtn("tops-family","All Tops",famN);
+    if(counts.tops) splitBtn("tops","Tops",counts.tops);
+    if(counts.tees) splitBtn("tees","Tees",counts.tees);
+    if(currentKind==="tops-family"||currentKind==="tops"||currentKind==="tees") row.style.display="flex";
+    bar.appendChild(row);
+  }
 }
 buildSubbar("women"); buildSubbar("men");
 /* Women's / Men's line tabs — one line at a time; Women's is the default. */
