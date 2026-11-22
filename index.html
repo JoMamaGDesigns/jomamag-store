@@ -403,8 +403,9 @@ body.gate-open{overflow:hidden}
        second showing of a piece that also lives in its home collection (the corner clones
        the cards in render()); the piece count deduplicates by name, as with the paisley
        pair. Joggers are not leggings and never stand here — their home is their own
-       Joggers walls. A single pair of leggings with no top is not a set: the Black Lace
-       Cream-Waist Leggings stand on the Women's Trousers wall. -->
+       Joggers walls. The Black Lace Cream-Waist Leggings are a set bottom — the shared
+       bottom of the Black Lace set and the Cream + Black set — and stand in this corner
+       with the Black Lace pair. -->
   <section class="headliner" data-section="leggings" aria-labelledby="leggings-h">
     <div class="headliner-band">
       <span class="corner-label">Top sellers</span>
@@ -1065,9 +1066,9 @@ var ITEMS = [
   {name:"Elegant Long Red Satin Skirt", price:150, cat:"signature", catLabel:"Skirt", note:"A long, elegant red satin skirt — sleek to the floor.", url:"https://horizon.meta.com/avatar/item?id=1485043007156636", img:"assets/elegant-long-red-satin-skirt-card.png", imgAlt:"Elegant Long Red Satin Skirt — the finished skirt, front view, bench render"},
   {name:"Roses After Dark Bottoms", price:200, cat:"signature", catLabel:"Bottoms", note:"Black flared bottoms scattered with red roses.", url:"https://horizon.meta.com/avatar/item?id=1094370479671481", img:"assets/roses-after-dark-bottoms-card.png", imgAlt:"Roses After Dark Bottoms — the finished bottoms, front view, bench render"},
   {name:"Chaos's Hoodie", price:500, cat:"signature", catLabel:"Men's · Hoodie top", note:"Black hoodie with the jeweled tiger roaring across the chest and a crystal-lined hood.", url:"https://horizon.meta.com/avatar/item?id=941176632408531", img:"assets/chaos-hoodie-card.png", imgAlt:"Chaos's Hoodie — the finished hoodie, front view, bench render"},
-  {name:"Cream Velor Corset Top", price:350, cat:"signature", catLabel:"Corset top", note:"Cream velour corset top with black lace-up crosses and sheer embroidered side panels.", url:"https://horizon.meta.com/avatar/item?id=929180310129062", img:"assets/card-cream-velor-corset-top.png", imgAlt:"Cream Velor Corset Top — the finished garment, front view, bench render"},
+  {name:"Cream Velor Corset Top", price:350, cat:"signature", catLabel:"Corset top — Matching set", note:"Cream velour corset top with black lace-up crosses and sheer embroidered side panels.", url:"https://horizon.meta.com/avatar/item?id=929180310129062", img:"assets/card-cream-velor-corset-top.png", imgAlt:"Cream Velor Corset Top — the finished garment, front view, bench render"},
   {name:"Black Lace Cream-Waist Leggings", price:350, cat:"signature", catLabel:"Leggings", note:"Black lace leggings with a cream waistband.", url:"https://horizon.meta.com/avatar/item?id=1767155984362816", img:"assets/card-black-lace-leggings.png", imgAlt:"Black Lace Cream-Waist Leggings — the finished garment, front view, bench render"},
-  {name:"Cut-Across Corset Top", price:350, cat:"signature", catLabel:"Corset top", note:"The cut-across corset top — leather cut across, with its matching wrap leggings in the line.", url:"https://horizon.meta.com/avatar/item?id=1120191930937402", img:"assets/card-cut-across-corset-top.png", imgAlt:"Cut-Across Corset Top — the finished garment, front view, bench render"},
+  {name:"Cut-Across Corset Top", price:350, cat:"signature", catLabel:"Corset top — Matching set", note:"The cut-across corset top — leather cut across, with its matching wrap leggings in the line.", url:"https://horizon.meta.com/avatar/item?id=1120191930937402", img:"assets/card-cut-across-corset-top.png", imgAlt:"Cut-Across Corset Top — the finished garment, front view, bench render"},
   {name:"Purple Reign Corduroy Pants", price:200, cat:"signature", catLabel:"Corduroy pants", note:"Corduroy pants in purple reign.", url:"https://horizon.meta.com/avatar/item?id=1006056498457013", img:"assets/card-corduroy-purple-reign.png", imgAlt:"Purple Reign Corduroy Pants — the finished garment, front view, bench render"},
   {name:"Midnight Black Corduroy Pants", price:200, cat:"signature", catLabel:"Corduroy pants", note:"Corduroy pants in midnight black.", url:"https://horizon.meta.com/avatar/item?id=2538006766674103", img:"assets/card-corduroy-midnight-black.png", imgAlt:"Midnight Black Corduroy Pants — the finished garment, front view, bench render"},
   {name:"Cherry Red Corduroy Pants", price:200, cat:"signature", catLabel:"Corduroy pants", note:"Corduroy pants in cherry red.", url:"https://horizon.meta.com/avatar/item?id=1593297225931595", img:"assets/card-corduroy-cherry-red.png", imgAlt:"Cherry Red Corduroy Pants — the finished garment, front view, bench render"},
@@ -3385,9 +3386,11 @@ function lineOf(it){
    categories for a line — hats, footwear, crowns, skirts, coats, one-pieces — return null: those
    cards are not re-categorised and stay where they sit under their line tab's All view. */
 var KIND_OVERRIDES={"atlas":"dresses","chaos's hoodie":"tops",
-  /* The Corset Tops shelf is gone (Catherine's word, 2026-11-18): the two standalone corset
-     tops that are not part of a set file under Tops and stand on the Women's Tops & Tees wall. */
-  "cream velor corset top":"tops","cut-across corset top":"tops",
+  /* Both corset tops are set pieces (Catherine's correction, 2026-11-21, superseding the
+     2026-11-18 "standalone" note): the Cream Velor Corset Top belongs to the Cream + Black
+     set (Black Lace Cream-Waist Leggings), the Cut-Across Corset Top to the Cut-Across set
+     (Cut-Across Leggings). Under her set law they file with their sets, never on Tops. */
+  "cream velor corset top":"sets","cut-across corset top":"sets",
   /* The Kente Zigzag Hoodie is the top half of the Kente jogger set: its catLabel carries no
      "jogger", so the probe filed it under Tops and the Women's Joggers view showed the pants
      alone (Catherine, 2026-11-21). Every jogger piece files under Joggers. */
@@ -3626,7 +3629,7 @@ function render(){
       ["Celestial Plum Corset","Celestial Plum Leggings"],
       ["Emerald Floral Corset","Emerald Floral Leggings"],
       ["Magenta Peony Corset","Magenta Peony Leggings"],
-      ["Black Lace Corset Top","Black Lace Cream-Waist Leggings"],
+      ["Black Lace Corset Top","Cream Velor Corset Top","Black Lace Cream-Waist Leggings"],
       ["Kente Zigzag Hoodie","Kente Zigzag Jogger Pants",
       "Alaari Aso Oke Hoodie","Alaari Aso Oke Jogger Pants",
       "Earth Bogolan Hoodie","Earth Bogolan Jogger Pants","Earth Bogolan Crew",
@@ -3659,8 +3662,8 @@ function render(){
      the Midnight Merlot corset with its leather leggings. The jogger sets are NOT leggings and
      never stand here: their home is the Women's / Men's Joggers walls. The Roses
      bottoms are flared pants, not leggings — they stand on the Women's Trousers wall, and the
-     Black Lace Cream-Waist Leggings are a single pair with no top — not a set — so they stand
-     on the Women's Trousers wall too. The clones carry the same name,
+     Black Lace Cream-Waist Leggings are the shared bottom of two sets (Black Lace and
+     Cream + Black) and stand here with the Black Lace pair. The clones carry the same name,
      category and line, so filtering, search and the line tabs treat them exactly like the
      originals, and the piece count deduplicates by name. */
   if(grids.leggings){
@@ -3828,7 +3831,6 @@ function render(){
       "Olive Portrait Tee","Dragon Fruit Portrait Tee","Lotus Portrait Tee","Hibiscus Portrait Tee",
       "Dahlia Portrait Tee","Sakura Portrait Tee","Cornflower Portrait Tee",
       "She Rose Black Tee","She Rose Purple Tee","She Rose Blue Tee","She Rose Peach Tee",
-      "Cream Velor Corset Top","Cut-Across Corset Top",
       "Black + Gold Blazer Top","Black & White Swirl Wrap Top",
       "Too Blessed To Be Stressed Tee"
     ];
