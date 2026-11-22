@@ -3749,6 +3749,35 @@ function render(){
     var womenSuitsOrder=["Deep Violet Jacket","Deep Violet Pants","Thanksgiving Harvest Jacket","Thanksgiving Harvest Pants"];
     womenSuitsOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.suitswomen.appendChild(src.cloneNode(true)); });
   }
+  /* Wall top-up: a wall must hold EVERY piece of its kind for its line, not only the
+     pieces its hand order list happens to name — a list that drifts leaves pieces off
+     their own category wall (the women's tops wall named 33 of the family's pieces).
+     Order-list pieces keep their places; any other card of the kind is appended in
+     catalogue order. The tab count, the count line and the wall then count one set. */
+  var WALL_KINDS={"tops-women":{line:"women",kinds:["tops","tees"]},"tops-men":{line:"men",kinds:["tops","tees"]},
+    "dresses":{line:"women",kinds:["dresses"]},"trousers-women":{line:"women",kinds:["trousers"]},
+    "trousers-men":{line:"men",kinds:["trousers"]},"corduroys-women":{line:"women",kinds:["corduroys"]},
+    "jeans":{line:"women",kinds:["jeans"]},"jeans-men":{line:"men",kinds:["jeans"]},
+    "joggers-women":{line:"women",kinds:["joggers"]},"joggers-men":{line:"men",kinds:["joggers"]},
+    "shoes":{line:null,kinds:["shoes"]},"hats":{line:null,kinds:["hats"]},
+    "suits-women":{line:"women",kinds:["suits"]},"suits-men":{line:"men",kinds:["suits"]}};
+  Object.keys(WALL_KINDS).forEach(function(gk){
+    var grid=grids[gk]; if(!grid) return;
+    var spec=WALL_KINDS[gk];
+    var have={};
+    grid.querySelectorAll(".card").forEach(function(c){ have[c.getAttribute("data-name")]=1; });
+    ITEMS.forEach(function(it){
+      if(it.gap||it.showcase||it.display) return;
+      var nm=(it.name||"").toLowerCase();
+      if(have[nm]) return;
+      var src=cardsByName[it.name]; if(!src) return;
+      if(spec.line && lineOf(it)!==spec.line) return;
+      var ks=KINDS_BY_NAME[nm]||[];
+      var ok=false; spec.kinds.forEach(function(k){ if(ks.indexOf(k)>-1) ok=true; });
+      if(!ok) return;
+      grid.appendChild(src.cloneNode(true)); have[nm]=1;
+    });
+  });
   /* The pieces that actually stand on the page after this render — a card in the DOM, in at
      least one place. The piece counts (the count line's total and the category sub-tab
      counts) are taken from this set, never from the raw catalogue: a piece with no card on
@@ -3900,7 +3929,15 @@ function applyFilter(){
     /* A piece shown in two places (the paisley pair) still counts once. */
     if(show && !seenNames[card.getAttribute("data-name")]){ seenNames[card.getAttribute("data-name")]=1; visible++; }
   });
+  /* In a category view that has its own wall, ONLY the wall section stands: every other
+     catalogue section steps aside whole, strays and all — a Tops tap must show the tops
+     wall, not a long scroll of near-empty sections each holding one stray piece
+     (Catherine, 2026-11-21: the Tops view showed her the Outfits section's single set top
+     and the Rose Capsule's single tee). Kinds with no wall (Sets) keep the scattered view. */
+  var WALL_FOR={women:{dresses:"dresses","tops-family":"tops-women",tops:"tops-women",tees:"tops-women",trousers:"trousers-women",corduroys:"corduroys-women",jeans:"jeans",joggers:"joggers-women",shoes:"shoes",hats:"hats",suits:"suits-women"},men:{"tops-family":"tops-men",tops:"tops-men",tees:"tops-men",trousers:"trousers-men",jeans:"jeans-men",joggers:"joggers-men",shoes:"shoes",hats:"hats",suits:"suits-men"}};
+  var wallKey=(currentKind!=="all" && !searching) ? (WALL_FOR[currentLine]||{})[currentKind] : null;
   document.querySelectorAll("[data-section]").forEach(function(sec){
+    if(wallKey && sec.getAttribute("data-section")!==wallKey){ sec.classList.add("hidden"); return; }
     var any=false; sec.querySelectorAll(".card").forEach(function(c){ if(!c.classList.contains("hidden")) any=true; });
     sec.classList.toggle("hidden",!any);
   });
