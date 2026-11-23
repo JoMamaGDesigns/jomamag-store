@@ -1073,7 +1073,7 @@ var ITEMS = [
   {name:"Elegant Long Red Satin Skirt", price:150, cat:"signature", catLabel:"Skirt", note:"A long, elegant red satin skirt — sleek to the floor.", url:"https://horizon.meta.com/avatar/item?id=1485043007156636", img:"assets/elegant-long-red-satin-skirt-card.png", imgAlt:"Elegant Long Red Satin Skirt — the finished skirt, front view, bench render"},
   {name:"Roses After Dark Bottoms", price:200, cat:"signature", catLabel:"Bottoms", note:"Black flared bottoms scattered with red roses.", url:"https://horizon.meta.com/avatar/item?id=1094370479671481", img:"assets/roses-after-dark-bottoms-card.png", imgAlt:"Roses After Dark Bottoms — the finished bottoms, front view, bench render"},
   {name:"Chaos's Hoodie", price:500, cat:"signature", catLabel:"Men's · Hoodie top", note:"Black hoodie with the jeweled tiger roaring across the chest and a crystal-lined hood.", display:true, url:"https://horizon.meta.com/avatar/item?id=941176632408531", img:"assets/chaos-hoodie-card.png", imgAlt:"Chaos's Hoodie — the finished hoodie, front view, bench render"},
-  {name:"Cream Velor Corset Top", price:350, cat:"signature", catLabel:"Corset top — Matching set", note:"Cream velour corset top with black lace-up crosses and sheer embroidered side panels.", url:"https://horizon.meta.com/avatar/item?id=929180310129062", img:"assets/card-cream-velor-corset-top.png", imgAlt:"Cream Velor Corset Top — the finished garment, front view, bench render"},
+  {name:"Cream Velor Corset Top", price:350, cat:"signature", catLabel:"Corset top — Matching set", note:"Cream velour corset top with black lace-up crosses and sheer embroidered side panels, made to match the Black Lace Cream-Waist Leggings.", url:"https://horizon.meta.com/avatar/item?id=929180310129062", img:"assets/card-cream-velor-corset-top.png", imgAlt:"Cream Velor Corset Top — the finished garment, front view, bench render"},
   {name:"Black Lace Cream-Waist Leggings", price:350, cat:"signature", catLabel:"Leggings", note:"Black lace leggings with a cream waistband.", url:"https://horizon.meta.com/avatar/item?id=1767155984362816", img:"assets/card-black-lace-leggings.png", imgAlt:"Black Lace Cream-Waist Leggings — the finished garment, front view, bench render"},
   {name:"Cut-Across Corset Top", price:350, cat:"signature", catLabel:"Corset top — Matching set", note:"The cut-across corset top — leather cut across, with its matching wrap leggings in the line.", url:"https://horizon.meta.com/avatar/item?id=1120191930937402", img:"assets/card-cut-across-corset-top.png", imgAlt:"Cut-Across Corset Top — the finished garment, front view, bench render"},
   {name:"Cut-Across Leggings", price:350, cat:"signature", catLabel:"Leggings — Matching set", note:"Black leggings with nude cut-across diagonal bands and crystal chains — the matching bottom for the Cut-Across Corset Top.", url:"https://horizon.meta.com/avatar/item?id=1492268719635360", img:"assets/card-cut-across-leggings.png", imgAlt:"Cut-Across Leggings — the finished garment, front view, bench render"},
@@ -3413,6 +3413,13 @@ var KIND_OVERRIDES={"atlas":"dresses","chaos's hoodie":"tops",
      set (Black Lace Cream-Waist Leggings), the Cut-Across Corset Top to the Cut-Across set
      (Cut-Across Leggings). Under her set law they file with their sets, never on Tops. */
   "cream velor corset top":"sets","cut-across corset top":"sets","cut-across leggings":"sets",
+  /* The Black Lace Cream-Waist Leggings are the shared bottom of the Black Lace and
+     Cream + Black sets: their label is a bare "Leggings", which the kind probe cannot
+     classify, so they carried no kind at all and the Sets view filtered them out —
+     both corset tops stood there with no bottom (Catherine, 2026-11-23). Pinned to
+     "sets" on the Cut-Across Leggings precedent, so the leggings stand in the Sets
+     view with both their tops, and on no garment wall. */
+  "black lace cream-waist leggings":"sets",
   /* The Kente Zigzag Hoodie is the top half of the Kente jogger set: its catLabel carries no
      "jogger", so the probe filed it under Tops and the Women's Joggers view showed the pants
      alone (Catherine, 2026-11-21). Every jogger piece files under Joggers. */
