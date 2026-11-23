@@ -668,7 +668,7 @@ body.gate-open{overflow:hidden}
       <div>
         <h2 id="hishers-h"><svg class="sec-mask" aria-hidden="true"><use href="#mg-mask"/></svg>His &amp; Hers Sets</h2>
         <div class="gold-rule"></div>
-        <p class="lede">Made to be worn as a pair — his set and her set of the same design, side by side, whichever line you are browsing. Each piece is priced piece by piece and bought separately in Horizon.</p>
+        <p class="lede">Made to be worn as a pair — his set and her set of the same design. Her pieces stand here on the Women&rsquo;s side and his on the Men&rsquo;s side, each set together. Each piece is priced piece by piece and bought separately in Horizon.</p>
       </div>
     </div>
     <div class="grid" data-grid="hishers"></div>
@@ -3790,15 +3790,21 @@ function render(){
     ];
     shoeOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.shoes.appendChild(src.cloneNode(true)); });
   }
-  /* His & Hers — the counterpart sets of one design, his and hers side by side under one label.
-     The clones carry data-line "both": a couple stays together whichever line tab is open, and
-     the piece count still deduplicates by name. Pairings are proven by the pieces' own names
-     and notes (matching Christmas pajama sets, the Bone twins,
+  /* His & Hers — the counterpart sets of one design, grouped under one label, but SPLIT BY
+     GENDER SIDE (Catherine, 2026-11-22): the women's set files on the Women's side and the
+     men's set on the Men's side, so each clone keeps its own piece's data-line — no clone
+     carries "both" any more. Within each side the set stays adjacent (his top beside his
+     pants; her top beside her pants — the Bursting Santa set is men's only, so it stands
+     as its own men's group with no women's counterpart — and for the Country Class cowboy set, his blazer
+     beside his dress pants with NO hat: the Paisley hat, the Country Classy Hat, belongs
+     to her outfit only). The piece count still deduplicates by name. Pairings are proven
+     by the pieces' own names and notes (matching Christmas pajama sets, the Bone twins,
      the Country Class family made for him and for her) — never guessed. */
   if(grids.hishers){
     var hhGroups=[
       ["Rudolph Christmas Pajamas — His & Her Pajama Set",["Rudolph Christmas Pajama Top — Men","Rudolph Christmas Pajama Pants — Men","Rudolph Christmas Pajama Top — Women","Rudolph Christmas Pajama Pants — Women"]],
       ["Snowman Christmas Pajamas — His & Her Pajama Set",["Snowman Christmas Pajama Top — Men","Snowman Christmas Pajama Pants — Men","Snowman Christmas Pajama Top — Women","Snowman Christmas Pajama Pants — Women"]],
+      ["Bursting Santa Christmas Pajamas — Men's Pajama Set",["Bursting Santa Pajama Top","Bursting Santa Pajama Pants"]],
       ["Country Class — His & Hers set",["Country Class Men's Blazer","Country Class Dress Pants","Country Class Top","Paisley Leather Bottoms","Country Classy Hat"]]
     ];
     hhGroups.forEach(function(g){
@@ -3811,7 +3817,7 @@ function render(){
       g[1].forEach(function(nm){
         var src=cardsByName[nm]; if(!src) return;
         var cl=src.cloneNode(true);
-        cl.setAttribute("data-line","both");
+        cl.setAttribute("data-line",src.getAttribute("data-line")||"women");
         var catEl=cl.querySelector(".cat");
         if(catEl && catEl.textContent.indexOf("His & Her Pajama Set")!==0) catEl.textContent="His & Hers · "+catEl.textContent;
         grids.hishers.appendChild(cl);
