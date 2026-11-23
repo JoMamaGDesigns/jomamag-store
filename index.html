@@ -403,6 +403,8 @@ body.gate-open{overflow:hidden}
       <article class="vip-card" data-request-kind="showcase" data-name="justin time top"><img class="card-img" src="assets/justin-time-top-render.png" alt="Justin Time Top — special request piece, made for one person only, display only"><h3>Justin Time Top</h3><p class="vip-line">Made for Justin Time — one only.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
       <article class="vip-card" data-request-kind="showcase" data-name="j. macnasty top"><img class="card-img" src="assets/j-macnasty-top-true.png" alt="J. MacNasty Top — special request piece, made for one person only, display only"><h3>J. MacNasty Top</h3><p class="vip-line">Made for J. MacNasty — one only.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
       <article class="vip-card" data-request-kind="showcase" data-name="brass balls tee"><img class="card-img" src="assets/brass-balls-tee-render.png" alt="Brass Balls Tee — special request piece, made for one person only, display only"><h3>Brass Balls Tee</h3><p class="vip-line">One only.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
+      <!-- Moved under Display at Catherine's word (2026-11-22): The Blammer — a piece made for one person — stands here as a display piece only, no buy link and no price shown, and nowhere in the buyable catalogue; its catalogue entry carries display:true. -->
+      <article class="vip-card" data-request-kind="showcase" data-name="the blammer"><img class="card-img" src="assets/blammer-card.png" alt="The Blammer — special request piece, made for one person only, display only"><h3>The Blammer</h3><p class="vip-line">One only.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
       <!-- Ruby Harvest Gown — Bread's (Showbread1's) dress stands in the showcase too, as the section's standing exception: a full buyable card, NOT display only, and it also keeps its regular card on the Dresses wall. Same picture, price and Horizon link in both places. -->
       <article class="card" data-cat="signature" data-name="ruby harvest gown" data-line="both"><button type="button" class="card-view-btn" aria-label="See the whole piece: Ruby Harvest Gown"><img class="card-img" src="assets/ruby-harvest-gown-card.png" alt="Ruby Harvest Gown — the finished gown, front view, bench render"></button><div class="card-top"><h3>Ruby Harvest Gown</h3><span class="price">250 Credits</span></div><div class="cat">Gown</div><p class="note">Feather skirt with a ruby collar and gold wheat harvest at the hem.</p><div class="card-actions"><a class="mini-btn primary" href="https://horizon.meta.com/avatar/item?id=4686256675025894" target="_blank" rel="noopener">Click here for more details</a><button class="mini-btn" type="button" data-copy="https://horizon.meta.com/avatar/item?id=4686256675025894">Copy Horizon address</button></div></article>
     </div>
@@ -951,7 +953,6 @@ var ITEMS = [
   {name:"Country Classy Hat", price:150, cat:"signature", catLabel:"Country Class · Cowboy hat — Matching set", note:"Paisley leather cowboy hat in rich cognac brown.", url:"https://horizon.meta.com/avatar/item?id=1388406199674345", img:"assets/country-classy-hat.png", imgAlt:"Country Classy Hat — the finished hat, front view, bench render"},
   {name:"Pink Rose's Delight Top", price:200, cat:"signature", catLabel:"Pink Rose · Top — Matching set", note:"Blush rose lace-up shrug with pink crisscross front. Pairs with the Pink Rose's Delight Skirt.", url:"https://horizon.meta.com/avatar/item?id=4145139522453709", img:"assets/pink-rose-top-garment.jpg", imgAlt:"Pink Rose's Delight Top — the finished shrug top, front view, from the dashboard 3D preview"},
   {name:"Pink Rose's Delight Skirt", price:200, cat:"signature", catLabel:"Pink Rose · Skirt — Matching set", note:"Blush rose mermaid skirt with pink mesh panel details. Pairs with the Pink Rose's Delight Top.", url:"https://horizon.meta.com/avatar/item?id=2333198224161128", img:"assets/pink-rose-skirt-garment.jpg", imgAlt:"Pink Rose's Delight Skirt — the finished skirt alone, front view, from the dashboard preview"},
-  {name:"Midnight Merlot Sparkle Pants", price:200, cat:"signature", catLabel:"Midnight Merlot · Sparkle pants", note:"Burgundy leather pants with sparkling rhinestones. Dazzling!", url:"https://horizon.meta.com/avatar/item?id=2070792016879991", img:"assets/midnight-merlot-sparkle-pants.png", imgAlt:"Midnight Merlot Sparkle Pants — the finished pants, front view, bench render"},
   /* Second showing of the paisley pair among the matching sets — same two pieces as the
      Country Class family cards above (dupe), so the piece count deduplicates by name. */
 
@@ -978,7 +979,7 @@ var ITEMS = [
 
 
   /* Raised to 150 in the 2026-10-25 repricing — direct links captured from the dashboard 2026-10-26 */
-  {name:"The Blammer", price:150, cat:"signature", catLabel:"General line · Top", note:"The Blammer top from the general line.", url:"https://horizon.meta.com/avatar/item?id=1986252892054124", img:"assets/blammer-card.png", imgAlt:"The Blammer — the finished top, garment only, front view"},
+  {name:"The Blammer", price:150, cat:"signature", catLabel:"General line · Top", note:"The Blammer top from the general line.", display:true, url:"https://horizon.meta.com/avatar/item?id=1986252892054124", img:"assets/blammer-card.png", imgAlt:"The Blammer — the finished top, garment only, front view"},
   {name:"Roses in the Dark 2 Top", price:350, cat:"signature", catLabel:"Roses in the Dark · Top — Matching set", note:"Roses in the dark — the top of the matching set.", url:"https://horizon.meta.com/avatar/item?id=1465381365561285", img:"assets/roses-in-the-dark-2-top.png", imgAlt:"Roses in the Dark 2 Top — the finished garment, front view, bench render"},
   {name:"Roses in the Dark Bottoms", price:350, cat:"signature", catLabel:"Roses in the Dark · Bottoms — Matching set", note:"Roses in the dark — the bottoms of the matching set.", gap:true, url:"https://horizon.meta.com/avatar/item?id=2517548755399428", img:"assets/roses-in-the-dark-2-bottoms.png", imgAlt:"Roses in the Dark Bottoms — the finished pants, front view, bench render"},
 
@@ -3374,11 +3375,17 @@ var MEN_SUIT_PIECES=["Cream Vine Jacket","Cream Vine Trousers","Black Vine Diamo
    word Men's, so they are named here as men's-line pieces, the same way the men's suit
    pieces are named above. */
 var MEN_SET_CAPS=["Groundnut Cap","Sanyan Cap","Kuba Cap"];
+/* The men's animal tee — its label carries only "Tee", so it is named here as a
+   men's-line piece, the same way the men's suit pieces are named above (Catherine's
+   correction, 2026-11-22: Tiger in Chains is a men's tee and stands on the Men's tops
+   wall, not the Women's). */
+var MEN_TEES=["Tiger in Chains"];
 function lineOf(it){
   var n=it.name||"", cl=it.catLabel||"";
   if(cl.indexOf("Men's")>-1 || n.indexOf("Men's")>-1) return "men";
   if(MEN_SUIT_PIECES.indexOf(n)>-1) return "men";
   if(MEN_SET_CAPS.indexOf(n)>-1) return "men";
+  if(MEN_TEES.indexOf(n)>-1) return "men";
   if(n==="Country Class Dress Pants") return "men";
   if(n.indexOf("Warlock")===0) return "men";
   if(MENS_DISTRESSED_JEANS.indexOf(n)>-1) return "men";
@@ -3750,7 +3757,7 @@ function render(){
       "Tropical Sunset Flare Pants","Mudcloth Flare Pants","Cherry Blossom Flare Pants","Emerald Garden Flare Pants","Crimson Tiger Flare Pants",
       "Zebra Pineapple Patchwork Pants",
       "Ruby, Black, and Smoke Pants",
-      "Midnight Merlot Sparkle Pants","Roses After Dark Bottoms"
+      "Roses After Dark Bottoms"
     ];
     womenTrouserOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.trousers.appendChild(src.cloneNode(true)); });
   }
@@ -3840,8 +3847,8 @@ function render(){
       "Jo Mama Says: Oh, Please!","Jo Mama Says: Told You So!",
       "Jo Mama Says: Yeah, Right!","Jo Mama Says: You're Kidding!",
       "Purple Roses in the Mist","Petal Noir Ribbed Top",
-      "Candy Corn Cashmere Top","Ruby Radiance Top","The Blammer",
-      "Tiger in Chains","Peacock Royale",
+      "Candy Corn Cashmere Top","Ruby Radiance Top",
+      "Peacock Royale",
       "Wilson’s Bird-of-Paradise Tee","Resplendent Quetzal Tee","Himalayan Monal Tee",
       "Victoria Crowned Pigeon Tee","Andean Rockbird Tee","Jeweled Hummingbird Tee",
       "Olive Portrait Tee","Dragon Fruit Portrait Tee","Lotus Portrait Tee","Hibiscus Portrait Tee",
@@ -3858,7 +3865,8 @@ function render(){
       "Classic. Not Basic. Top","Not a Morning Person. Not Afternoon Either. Top",
       "Stay Wild. Stay Weird. Stay You. Top","Made of Scars and Sarcastic Remarks Top",
       "Grind Now. Flex Later. Top","Loud Mouth. Quiet Grind. Top",
-      "No Regrets. Just Lessons and Legends. Top","Legend in the Making. Coffee in the Taking. Top"
+      "No Regrets. Just Lessons and Legends. Top","Legend in the Making. Coffee in the Taking. Top",
+      "Tiger in Chains"
     ];
     menTopOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.topsmen.appendChild(src.cloneNode(true)); });
   }
