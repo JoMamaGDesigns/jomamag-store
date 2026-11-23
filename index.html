@@ -1076,6 +1076,7 @@ var ITEMS = [
   {name:"Cream Velor Corset Top", price:350, cat:"signature", catLabel:"Corset top — Matching set", note:"Cream velour corset top with black lace-up crosses and sheer embroidered side panels.", url:"https://horizon.meta.com/avatar/item?id=929180310129062", img:"assets/card-cream-velor-corset-top.png", imgAlt:"Cream Velor Corset Top — the finished garment, front view, bench render"},
   {name:"Black Lace Cream-Waist Leggings", price:350, cat:"signature", catLabel:"Leggings", note:"Black lace leggings with a cream waistband.", url:"https://horizon.meta.com/avatar/item?id=1767155984362816", img:"assets/card-black-lace-leggings.png", imgAlt:"Black Lace Cream-Waist Leggings — the finished garment, front view, bench render"},
   {name:"Cut-Across Corset Top", price:350, cat:"signature", catLabel:"Corset top — Matching set", note:"The cut-across corset top — leather cut across, with its matching wrap leggings in the line.", url:"https://horizon.meta.com/avatar/item?id=1120191930937402", img:"assets/card-cut-across-corset-top.png", imgAlt:"Cut-Across Corset Top — the finished garment, front view, bench render"},
+  {name:"Cut-Across Leggings", price:350, cat:"signature", catLabel:"Leggings — Matching set", note:"Black leggings with nude cut-across diagonal bands and crystal chains — the matching bottom for the Cut-Across Corset Top.", url:"https://horizon.meta.com/avatar/item?id=1492268719635360", img:"assets/card-cut-across-leggings.png", imgAlt:"Cut-Across Leggings — the finished garment, front view, bench render"},
   {name:"Purple Reign Corduroy Pants", price:200, cat:"signature", catLabel:"Corduroy pants", note:"Corduroy pants in purple reign.", url:"https://horizon.meta.com/avatar/item?id=1006056498457013", img:"assets/card-corduroy-purple-reign.png", imgAlt:"Purple Reign Corduroy Pants — the finished garment, front view, bench render"},
   {name:"Midnight Black Corduroy Pants", price:200, cat:"signature", catLabel:"Corduroy pants", note:"Corduroy pants in midnight black.", url:"https://horizon.meta.com/avatar/item?id=2538006766674103", img:"assets/card-corduroy-midnight-black.png", imgAlt:"Midnight Black Corduroy Pants — the finished garment, front view, bench render"},
   {name:"Cherry Red Corduroy Pants", price:200, cat:"signature", catLabel:"Corduroy pants", note:"Corduroy pants in cherry red.", url:"https://horizon.meta.com/avatar/item?id=1593297225931595", img:"assets/card-corduroy-cherry-red.png", imgAlt:"Cherry Red Corduroy Pants — the finished garment, front view, bench render"},
@@ -3411,7 +3412,7 @@ var KIND_OVERRIDES={"atlas":"dresses","chaos's hoodie":"tops",
      2026-11-18 "standalone" note): the Cream Velor Corset Top belongs to the Cream + Black
      set (Black Lace Cream-Waist Leggings), the Cut-Across Corset Top to the Cut-Across set
      (Cut-Across Leggings). Under her set law they file with their sets, never on Tops. */
-  "cream velor corset top":"sets","cut-across corset top":"sets",
+  "cream velor corset top":"sets","cut-across corset top":"sets","cut-across leggings":"sets",
   /* The Kente Zigzag Hoodie is the top half of the Kente jogger set: its catLabel carries no
      "jogger", so the probe filed it under Tops and the Women's Joggers view showed the pants
      alone (Catherine, 2026-11-21). Every jogger piece files under Joggers. */
@@ -3653,6 +3654,7 @@ function render(){
       ["Emerald Floral Corset","Emerald Floral Leggings"],
       ["Magenta Peony Corset","Magenta Peony Leggings"],
       ["Black Lace Corset Top","Cream Velor Corset Top","Black Lace Cream-Waist Leggings"],
+      ["Cut-Across Corset Top","Cut-Across Leggings"],
       ["Kente Zigzag Hoodie","Kente Zigzag Jogger Pants",
       "Alaari Aso Oke Hoodie","Alaari Aso Oke Jogger Pants",
       "Earth Bogolan Hoodie","Earth Bogolan Jogger Pants","Earth Bogolan Crew",
@@ -3697,7 +3699,7 @@ function render(){
       "Emerald Floral Corset","Emerald Floral Leggings",
       "Magenta Peony Corset","Magenta Peony Leggings",
       "Black Lace Corset Top","Black Lace Cream-Waist Leggings","Cream Velor Corset Top",
-      "Cut-Across Corset Top"
+      "Cut-Across Corset Top","Cut-Across Leggings"
     ];
     leggingOrder.forEach(function(nm){
       var src=cardsByName[nm];
