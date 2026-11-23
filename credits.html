@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>Need Meta Credits? — Jo Mama G Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2a0e47; --surface:#3a1663; --surface2:#31114f; --ink:#faf5ff; --muted:#d8c6ee;
+  --purple:#e2d0ff; --purple-deep:#1d0733; --purple-soft:#31114f;
+  --gold:#d4af37; --gold-bright:#e5c558; --gold-soft:#4a360e;
+  --teal:#2bb3a3; --teal-bright:#5fd3c5; --teal-soft:#0f3d3a;
+  --line:#96742f; --chip:#31114f;
+  --btn-ink:#241038;
+  --shadow:0 10px 30px rgba(10,2,20,.35);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#180631; --surface:#270d47; --surface2:#200a3a; --ink:#faf5ff; --muted:#cdb4ea;
+    --purple:#e6d6ff; --purple-deep:#10021f; --purple-soft:#200a3a;
+    --gold:#e3bc4f; --gold-bright:#f0d27a; --gold-soft:#3d2c0b;
+    --teal:#35bfa9; --teal-bright:#6fd8c9; --teal-soft:#0b3532;
+    --line:#8a6a30; --chip:#200a3a;
+    --btn-ink:#221033;
+    --shadow:0 12px 32px rgba(0,0,0,.5);
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Jost",system-ui,-apple-system,Segoe UI,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--purple)}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;line-height:1.05;margin:0}
+h2{font-size:clamp(32px,5vw,44px);font-weight:700;letter-spacing:.01em}
+h3{font-size:24px;font-weight:700}
+.lede{color:var(--muted);font-size:18px;max-width:62ch}
+.small{font-size:14px;color:var(--muted)}
+.gold-rule{width:64px;height:3px;background:var(--gold-bright);border-radius:2px;margin:14px 0 16px}
+::selection{background:var(--teal);color:#fff}
+
+/* Hero masthead — the shop's own header, as on the store page */
+.hero{position:relative;background:var(--purple-deep);color:#fff;overflow:hidden;border-bottom:3px solid var(--gold-bright)}
+.hero-inner{position:relative;padding:56px 0 48px;max-width:1120px;margin:0 auto;padding-left:20px;padding-right:20px}
+.hero-brand{font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-bright);font-weight:600}
+.hero h1{font-size:clamp(40px,7vw,64px);font-weight:700;color:#fff;margin:10px 0 8px}
+.hero-tag{font-family:"Cormorant Garamond",serif;font-size:clamp(22px,3.5vw,30px);font-style:italic;color:#f6e9c8;max-width:34ch;line-height:1.2}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 22px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:inherit}
+.btn-gold{background:var(--gold-bright);color:#241038}
+.btn-gold:hover{background:#f0d27a}
+.btn-purple{background:var(--gold-bright);color:#241038;border-color:var(--gold)}
+.btn-purple:hover{background:#f0d27a}
+
+section{padding:44px 0 8px}
+.back-link{display:inline-block;margin:22px 0 0;font-weight:600;text-decoration:none}
+.back-link:hover{text-decoration:underline}
+.back-link-bottom{display:inline-block;margin:30px 0 44px;font-weight:600;text-decoration:none}
+.back-link-bottom:hover{text-decoration:underline}
+
+/* The wording panel — the approved words, set out plainly */
+.credits-words{max-width:70ch}
+.credits-words p{margin:0 0 12px}
+.credits-words .pack-list{margin:0 0 12px;line-height:1.7}
+.credits-guide{margin-top:18px}
+
+/* Phone choice — Catherine's design: tap your phone, and its picture steps open under it */
+.phone-choice{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 6px}
+.phone-btn{border:1.5px solid var(--line);background:var(--chip);color:var(--ink);padding:14px 24px;border-radius:999px;font-size:18px;font-weight:600;cursor:pointer;font-family:inherit}
+.phone-btn:hover{border-color:var(--teal)}
+.phone-btn[aria-pressed="true"]{background:var(--gold-bright);color:#241038;border-color:var(--gold-bright)}
+.phone-set{margin-top:14px}
+.phone-set[hidden]{display:none}
+.phone-set .app-row{margin:6px 0 20px}
+.credits-cards{display:flex;flex-direction:column;gap:22px;max-width:560px}
+.credits-cards img{width:100%;border:2px solid var(--gold);border-radius:16px;box-shadow:var(--shadow);background:var(--surface)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a class="back-link" href="index.html">&larr; Back to the shop</a>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-brand">Avatar clothing · Meta Horizon · by Jo_Mama_G</div>
+    <h1>Need Meta Credits?</h1>
+    <div class="hero-tag">The way that works — step by step, with pictures.</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section aria-labelledby="credits-words-h">
+    <h2 id="credits-words-h">How to get Meta Credits</h2>
+    <div class="gold-rule"></div>
+    <div class="credits-words">
+      <p>Every price in this shop is in Meta Credits. You buy Credits inside the Meta Horizon app on your phone — here is the way that works, step by step:</p>
+      <p><strong>1.</strong> Open the <strong>Meta Horizon</strong> app.<br>
+      <strong>2.</strong> Tap your <strong>profile picture</strong> — it&rsquo;s at the bottom center of the screen.<br>
+      <strong>3.</strong> Tap the <strong>purple diamond</strong> at the top right. The number beside it is how many Credits you have now.<br>
+      <strong>4.</strong> Tap <strong>&ldquo;Add Meta Credits.&rdquo;</strong><br>
+      <strong>5.</strong> Pick a pack and pay with your usual payment method:</p>
+      <p class="pack-list">300 Credits — $2.99<br>
+      500 Credits — $4.99 (30 bonus Credits)<br>
+      1,000 Credits — $9.99 (200 bonus Credits) — Popular<br>
+      2,000 Credits — $19.99 (500 bonus Credits)<br>
+      5,000 Credits — $49.99 (1,750 bonus Credits) — Best value</p>
+      <p>Then come back here and tap the piece you want.</p>
+      <p><strong>Careful — Quest cash is different money.</strong> Inside the app&rsquo;s menu there is a Wallet, and it holds &ldquo;Quest cash.&rdquo; Quest cash does <strong>not</strong> buy avatar clothes here. Only buy Meta Credits, from the purple diamond. The gold coin at the top of your profile is quest-rewards money — that isn&rsquo;t Credits either.</p>
+      <p>Don&rsquo;t have the app yet? Get it here — or, if the app is already on your phone and a store page opens instead, tap <strong>Open</strong> or <strong>Play</strong> on that page to go into the app. That hop is normal; the store page is only for installing.</p>
+      <p class="credits-guide"><a class="btn btn-purple" href="https://www.meta.com/help/quest/1543535462925767/" target="_blank" rel="noopener">Meta&rsquo;s guide to Meta Credits</a></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="credits-pics-h">
+    <h2 id="credits-pics-h">See it in pictures</h2>
+    <div class="gold-rule"></div>
+    <p class="lede">Tap your phone, and the picture steps for it open right here — every tap circled, in order.</p>
+    <div class="phone-choice" role="group" aria-label="Choose your phone">
+      <button class="phone-btn" type="button" data-phone="iphone" aria-pressed="false">I have an iPhone</button>
+      <button class="phone-btn" type="button" data-phone="android" aria-pressed="false">I have an Android</button>
+    </div>
+
+    <div class="phone-set" id="phoneSetIphone" hidden>
+      <p class="app-row"><a class="btn btn-purple" href="http://itunes.apple.com/app/id1366478176" target="_blank" rel="noopener">Meta Horizon app — iPhone</a></p>
+      <div class="credits-cards">
+        <img src="assets/credits-iphone-step-1.png" alt="Step 1, iPhone — the App Store page for the Meta Horizon app; tap Open or GET to go into the app">
+        <img src="assets/credits-iphone-step-2.png" alt="Step 2, iPhone — inside the Meta Horizon app, tap your profile picture at the bottom center">
+        <img src="assets/credits-iphone-step-3.png" alt="Step 3, iPhone — on your profile, tap the purple diamond at the top right">
+        <img src="assets/credits-iphone-step-4.png" alt="Step 4, iPhone — the Add Meta Credits screen">
+        <img src="assets/credits-iphone-step-5.png" alt="Step 5, iPhone — pick a pack and tap its blue price to pay">
+        <img src="assets/credits-iphone-trap.png" alt="Careful, iPhone — the Wallet holds Quest cash, which is different money and does not buy clothes here">
+      </div>
+    </div>
+
+    <div class="phone-set" id="phoneSetAndroid" hidden>
+      <p class="app-row"><a class="btn btn-purple" href="https://play.google.com/store/apps/details?id=com.oculus.twilight&gl=US" target="_blank" rel="noopener">Meta Horizon app — Android</a></p>
+      <div class="credits-cards">
+        <img src="assets/credits-android-step-1.png" alt="Step 1, Android — the Google Play page for the Meta Horizon app; tap Play to go into the app">
+        <img src="assets/credits-android-step-2.png" alt="Step 2, Android — inside the Meta Horizon app, tap your profile picture at the bottom center">
+        <img src="assets/credits-android-step-3.png" alt="Step 3, Android — on your profile, tap the purple diamond at the top right">
+        <img src="assets/credits-android-step-4.png" alt="Step 4, Android — the Add Meta Credits screen">
+        <img src="assets/credits-android-step-5.png" alt="Step 5, Android — pick a pack and tap its blue price to pay">
+        <img src="assets/credits-android-trap.png" alt="Careful, Android — the Wallet holds Quest cash, which is different money and does not buy clothes here">
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:22px">The app buttons open in a new tab, so your place here is kept — when you have your Credits, come back to this tab and tap your piece. You can always find the shop again at jomamagdesigns.github.io/jomamag-store/</p>
+  </section>
+
+  <a class="back-link-bottom" href="index.html">&larr; Back to the shop</a>
+</main>
+
+<script>
+/* Phone choice — show the tapped phone's picture steps, hide the other's.
+   Nothing is shown until a phone is tapped. */
+(function(){
+  var sets={iphone:document.getElementById("phoneSetIphone"),android:document.getElementById("phoneSetAndroid")};
+  var btns=document.querySelectorAll("[data-phone]");
+  btns.forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var which=btn.getAttribute("data-phone");
+      btns.forEach(function(b){ b.setAttribute("aria-pressed", b===btn ? "true" : "false"); });
+      Object.keys(sets).forEach(function(k){ sets[k].hidden = (k!==which); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

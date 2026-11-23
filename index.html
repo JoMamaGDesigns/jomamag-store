@@ -192,6 +192,10 @@ section.headliner{padding-top:36px}
 .credits-callout p{margin:0}
 .credits-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 .credits-callout .credits-back{margin-top:14px}
+/* Credits entrance — the gold door to the Credits help page, first thing under the masthead */
+.credits-entry{text-align:center;margin:26px 0 2px}
+.credits-entry-btn{font-size:19px;padding:16px 32px}
+.credits-entry-sub{margin:10px 0 0;color:var(--muted);font-size:15px}
 
 /* Hashtags */
 .hash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:18px}
@@ -337,6 +341,16 @@ body.gate-open{overflow:hidden}
   <svg class="hero-mask tr" aria-hidden="true"><use href="#mg-mask"/></svg>
   <svg class="hero-mask br" aria-hidden="true"><use href="#mg-mask"/></svg>
 </header>
+
+<div class="wrap">
+  <!-- CREDITS ENTRANCE — Catherine's rule: as soon as somebody enters the store, a button
+       offers the way to Meta Credits, before the search, the count and the categories.
+       It leads to the dedicated Credits help page, not a section of this page. -->
+  <div class="credits-entry">
+    <a class="btn btn-gold credits-entry-btn" href="credits.html">Need Meta Credits? Tap here</a>
+    <p class="credits-entry-sub">We&rsquo;ll show you how to get them — takes about a minute</p>
+  </div>
+</div>
 
 <div class="wrap">
   <!-- WOMEN'S / MEN'S LINE TABS — the way into the collection: pick a line, then a category
@@ -728,13 +742,10 @@ body.gate-open{overflow:hidden}
     <p class="lede">Every confirmed sale in this shop’s history started the same way: Jo Mama G sent the buyer a direct link, they tapped it, and bought the piece. Follow that door — it’s the proven one.</p>
     <div class="credits-callout">
       <h3>Need Meta Credits?</h3>
-      <p>Every price in this shop is in Meta Credits. You buy Credits inside Meta Horizon Worlds — in your headset, or in the Meta Horizon app on your phone. Open Worlds, tap Meta Credits, pick a pack, and pay with your usual payment method. Packs start at 300 Credits for $2.99, and the bigger packs add bonus Credits. Then come back here and tap the piece you want.</p>
+      <p>Every price in this shop is in Meta Credits — and there is one way to buy them that works. The Credits page shows it step by step, with pictures for your phone.</p>
       <div class="credits-btns">
-        <a class="btn btn-purple" href="http://itunes.apple.com/app/id1366478176" target="_blank" rel="noopener">Meta Horizon app — iPhone</a>
-        <a class="btn btn-purple" href="https://play.google.com/store/apps/details?id=com.oculus.twilight&gl=US" target="_blank" rel="noopener">Meta Horizon app — Android</a>
-        <a class="btn btn-purple" href="https://www.meta.com/help/quest/1543535462925767/" target="_blank" rel="noopener">Meta’s guide to Meta Credits</a>
+        <a class="btn btn-purple" href="credits.html">See how to get them</a>
       </div>
-      <p class="credits-back">These open in a new tab, so your place here is kept — when you have your Credits, come back to this tab and tap your piece. You can always find the shop again at jomamagdesigns.github.io/jomamag-store/</p>
     </div>
     <div class="panel">
       <div class="steps">
@@ -918,19 +929,19 @@ var ITEMS = [
   {name:"Python Print Cowboy Hat", price:250, cat:"animal", catLabel:"Animal set · Hat — Matching set", note:"Photorealistic python scales.", url:"https://horizon.meta.com/avatar/item?id=1120838210279744", img:"assets/python-cowboy-hat.png", imgAlt:"Python Print Cowboy Hat — the finished hat, front view, bench render"},
 
   /* Signature */
-  {name:"Jo Mama Says: I Know Something You Don't", price:150, cat:"signature", catLabel:"Jo Mama Says shirt", note:"Her enchantress, winking, finger to lips. The all-front version — made to be read across a poker table. From today's outfit.", url:"https://horizon.meta.com/avatar/item?id=1446690720892331", img:"assets/jo-mama-says-garment.jpg", imgAlt:"Jo Mama Says: I Know Something You Don't — the finished fitted tee, front view, bench render"},
-  {name:"Jo Mama Says: Read 'Em And Weep", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Black fitted tee, card-playing woman scene.", url:"https://horizon.meta.com/avatar/item?id=1180814077841731", img:"assets/jo-mama-says-read-em-and-weep.jpg", imgAlt:"Jo Mama Says: Read 'Em And Weep — black fitted tee, front view"},
-  {name:"Jo Mama Says: I've Seen Better Bluffs At Bingo", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee.", url:"https://horizon.meta.com/avatar/item?id=1839844140552888", img:"assets/jo-mama-says-better-bluffs-at-bingo.jpg", imgAlt:"Jo Mama Says: I've Seen Better Bluffs At Bingo — brown fitted tee, front view"},
-  {name:"Jo Mama Says: Honey, Please", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee, porch scene with honey jars.", url:"https://horizon.meta.com/avatar/item?id=1860112658321556", img:"assets/jo-mama-says-honey-please.jpg", imgAlt:"Jo Mama Says: Honey, Please — brown fitted tee, front view"},
-  {name:"Jo Mama Says: And Your Point Is…?", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Black fitted tee, library scene.", url:"https://horizon.meta.com/avatar/item?id=1621057815856623", img:"assets/jo-mama-says-and-your-point-is.jpg", imgAlt:"Jo Mama Says: And Your Point Is…? — black fitted tee, front view"},
-  {name:"Jo Mama Says: Hold My Sweet Tea", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee, porch scene.", url:"https://horizon.meta.com/avatar/item?id=3815145558635532", img:"assets/jo-mama-says-hold-my-sweet-tea.jpg", imgAlt:"Jo Mama Says: Hold My Sweet Tea — brown fitted tee, front view"},
-  {name:"Jo Mama Says: Sit Down, You're Blocking The View", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Dark brown fitted tee, theatre scene.", url:"https://horizon.meta.com/avatar/item?id=2148550346021072", img:"assets/jo-mama-says-blocking-the-view.jpg", imgAlt:"Jo Mama Says: Sit Down, You're Blocking The View — dark brown fitted tee, front view"},
-  {name:"Jo Mama Says: Kiss My Grits", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee, diner scene.", url:"https://horizon.meta.com/avatar/item?id=1143230765078891", img:"assets/jo-mama-says-kiss-my-grits.jpg", imgAlt:"Jo Mama Says: Kiss My Grits — brown fitted tee, front view"},
-  {name:"Jo Mama Says: Bless Your Heart", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee, garden balcony scene.", url:"https://horizon.meta.com/avatar/item?id=1897653911105984", img:"assets/jo-mama-says-bless-your-heart.jpg", imgAlt:"Jo Mama Says: Bless Your Heart — brown fitted tee, front view"},
-  {name:"Jo Mama Says: Oh, Please!", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Black fitted tee, purple wisteria scene.", url:"https://horizon.meta.com/avatar/item?id=1780785346341054", img:"assets/jo-mama-says-oh-please.jpg", imgAlt:"Jo Mama Says: Oh, Please! — black fitted tee, front view"},
-  {name:"Jo Mama Says: Told You So!", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Dark brown fitted tee, sunset garden scene.", url:"https://horizon.meta.com/avatar/item?id=2081011352590846", img:"assets/jo-mama-says-told-you-so.jpg", imgAlt:"Jo Mama Says: Told You So! — dark brown fitted tee, front view"},
-  {name:"Jo Mama Says: Yeah, Right!", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Black fitted tee, purple wisteria scene.", url:"https://horizon.meta.com/avatar/item?id=4763478363884663", img:"assets/jo-mama-says-yeah-right.jpg", imgAlt:"Jo Mama Says: Yeah, Right! — black fitted tee, front view"},
-  {name:"Jo Mama Says: You're Kidding!", price:150, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Olive fitted tee, butterfly meadow scene.", url:"https://horizon.meta.com/avatar/item?id=2071808680195574", img:"assets/jo-mama-says-youre-kidding.jpg", imgAlt:"Jo Mama Says: You're Kidding! — olive fitted tee, front view"},
+  {name:"Jo Mama Says: I Know Something You Don't", price:250, cat:"signature", catLabel:"Jo Mama Says shirt", note:"Her enchantress, winking, finger to lips. The all-front version — made to be read across a poker table. From today's outfit.", url:"https://horizon.meta.com/avatar/item?id=1446690720892331", img:"assets/jo-mama-says-garment.jpg", imgAlt:"Jo Mama Says: I Know Something You Don't — the finished fitted tee, front view, bench render"},
+  {name:"Jo Mama Says: Read 'Em And Weep", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Black fitted tee, card-playing woman scene.", url:"https://horizon.meta.com/avatar/item?id=1180814077841731", img:"assets/jo-mama-says-read-em-and-weep.jpg", imgAlt:"Jo Mama Says: Read 'Em And Weep — black fitted tee, front view"},
+  {name:"Jo Mama Says: I've Seen Better Bluffs At Bingo", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee.", url:"https://horizon.meta.com/avatar/item?id=1839844140552888", img:"assets/jo-mama-says-better-bluffs-at-bingo.jpg", imgAlt:"Jo Mama Says: I've Seen Better Bluffs At Bingo — brown fitted tee, front view"},
+  {name:"Jo Mama Says: Honey, Please", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee, porch scene with honey jars.", url:"https://horizon.meta.com/avatar/item?id=1860112658321556", img:"assets/jo-mama-says-honey-please.jpg", imgAlt:"Jo Mama Says: Honey, Please — brown fitted tee, front view"},
+  {name:"Jo Mama Says: And Your Point Is…?", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Black fitted tee, library scene.", url:"https://horizon.meta.com/avatar/item?id=1621057815856623", img:"assets/jo-mama-says-and-your-point-is.jpg", imgAlt:"Jo Mama Says: And Your Point Is…? — black fitted tee, front view"},
+  {name:"Jo Mama Says: Hold My Sweet Tea", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee, porch scene.", url:"https://horizon.meta.com/avatar/item?id=3815145558635532", img:"assets/jo-mama-says-hold-my-sweet-tea.jpg", imgAlt:"Jo Mama Says: Hold My Sweet Tea — brown fitted tee, front view"},
+  {name:"Jo Mama Says: Sit Down, You're Blocking The View", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Dark brown fitted tee, theatre scene.", url:"https://horizon.meta.com/avatar/item?id=2148550346021072", img:"assets/jo-mama-says-blocking-the-view.jpg", imgAlt:"Jo Mama Says: Sit Down, You're Blocking The View — dark brown fitted tee, front view"},
+  {name:"Jo Mama Says: Kiss My Grits", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee, diner scene.", url:"https://horizon.meta.com/avatar/item?id=1143230765078891", img:"assets/jo-mama-says-kiss-my-grits.jpg", imgAlt:"Jo Mama Says: Kiss My Grits — brown fitted tee, front view"},
+  {name:"Jo Mama Says: Bless Your Heart", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Brown fitted tee, garden balcony scene.", url:"https://horizon.meta.com/avatar/item?id=1897653911105984", img:"assets/jo-mama-says-bless-your-heart.jpg", imgAlt:"Jo Mama Says: Bless Your Heart — brown fitted tee, front view"},
+  {name:"Jo Mama Says: Oh, Please!", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Black fitted tee, purple wisteria scene.", url:"https://horizon.meta.com/avatar/item?id=1780785346341054", img:"assets/jo-mama-says-oh-please.jpg", imgAlt:"Jo Mama Says: Oh, Please! — black fitted tee, front view"},
+  {name:"Jo Mama Says: Told You So!", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Dark brown fitted tee, sunset garden scene.", url:"https://horizon.meta.com/avatar/item?id=2081011352590846", img:"assets/jo-mama-says-told-you-so.jpg", imgAlt:"Jo Mama Says: Told You So! — dark brown fitted tee, front view"},
+  {name:"Jo Mama Says: Yeah, Right!", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Black fitted tee, purple wisteria scene.", url:"https://horizon.meta.com/avatar/item?id=4763478363884663", img:"assets/jo-mama-says-yeah-right.jpg", imgAlt:"Jo Mama Says: Yeah, Right! — black fitted tee, front view"},
+  {name:"Jo Mama Says: You're Kidding!", price:250, cat:"signature", catLabel:"Jo Mama Says · Fitted tee", note:"Olive fitted tee, butterfly meadow scene.", url:"https://horizon.meta.com/avatar/item?id=2071808680195574", img:"assets/jo-mama-says-youre-kidding.jpg", imgAlt:"Jo Mama Says: You're Kidding! — olive fitted tee, front view"},
   {name:"Too Blessed To Be Stressed Tee", price:250, cat:"signature", catLabel:"Fitted tee", note:"Women's fitted tee. Too blessed to be stressed, too tired to care.", url:"https://horizon.meta.com/avatar/item?id=1527693052522817", img:"assets/too-blessed-womens-fitted-tee.png", imgAlt:"Too Blessed To Be Stressed Tee — cream fitted tee with the saying in black, front view, bench render"},
   {name:"Gold Rhinestone Knit Hat", price:350, cat:"signature", catLabel:"Personalised knit hat", note:"With YOUR name worked into the hat: 350. The hat plain, without a name: 250.", url:"https://horizon.meta.com/avatar/item?id=1597111038567759", img:"assets/knit-hat-garment.jpg", imgAlt:"Gold Rhinestone Knit Hat — the finished hat on a head form, bench render"},
   {name:"Country Class Men's Blazer", price:200, cat:"signature", catLabel:"Country Class · Men's blazer — Matching set", note:"Dark brown vest with black bowtie and centered black buttons — Country Class style for him.", url:"https://horizon.meta.com/avatar/item?id=3240733932799311", img:"assets/country-class-mens-blazer.png", imgAlt:"Country Class Men's Blazer — the finished garment, front view, bench render"},
@@ -1086,6 +1097,8 @@ var ITEMS = [
   {name:"Snowman Christmas Pajama Pants — Men", price:250, cat:"signature", catLabel:"His & Her Pajama Set · Christmas Pajamas · Men's pants — Matching set", note:"The men's pants to match the Snowman Christmas pajama top.", url:"https://horizon.meta.com/avatar/item?id=2374857139993969", img:"assets/card-snowman-pajama-pants-men.png", imgAlt:"Snowman Christmas Pajama Pants — Men — the finished garment, front view, bench render"},
   {name:"Snowman Christmas Pajama Top — Women", price:250, cat:"signature", catLabel:"His & Her Pajama Set · Christmas Pajamas · Women's top — Matching set", note:"Snowman Christmas pajama top for women.", url:"https://horizon.meta.com/avatar/item?id=1443757723872836", img:"assets/card-snowman-pajama-top-women.png", imgAlt:"Snowman Christmas Pajama Top — Women — the finished garment, front view, bench render"},
   {name:"Snowman Christmas Pajama Pants — Women", price:250, cat:"signature", catLabel:"His & Her Pajama Set · Christmas Pajamas · Women's pants — Matching set", note:"The women's pants to match the Snowman Christmas pajama top.", url:"https://horizon.meta.com/avatar/item?id=2696783287443396", img:"assets/card-snowman-pajama-pants-women.png", imgAlt:"Snowman Christmas Pajama Pants — Women — the finished garment, front view, bench render"},
+  {name:"Bursting Santa Pajama Top", price:250, cat:"signature", catLabel:"Christmas Pajamas · Men's pajama top — Matching set", note:"Men's pajama top. Santa bursting through red cloth — pairs with the Bursting Santa Pajama Pants.", url:"https://horizon.meta.com/avatar/item?id=979546914851324", img:"assets/bursting-santa-pajama-top.png", imgAlt:"Bursting Santa Pajama Top — the finished top, front panel view, master-sheet crop"},
+  {name:"Bursting Santa Pajama Pants", price:250, cat:"signature", catLabel:"Christmas Pajamas · Men's pajama pants — Matching set", note:"Men's pajama pants. Red and green plaid, big white reindeer — pairs with the Bursting Santa Pajama Top.", url:"https://horizon.meta.com/avatar/item?id=1817555012806566", img:"assets/bursting-santa-pajama-pants.png", imgAlt:"Bursting Santa Pajama Pants — the finished pants, front view, master-sheet crop"},
   {name:"Olive Portrait Tee", price:350, cat:"signature", catLabel:"Portrait tee", note:"The Olive portrait tee — the portrait whole, the wording straight across beneath it.", url:"https://horizon.meta.com/avatar/item?id=1516247603675103", img:"assets/card-portrait-olive.png", imgAlt:"Olive Portrait Tee — the finished garment, front view, bench render"},
   {name:"Dragon Fruit Portrait Tee", price:350, cat:"signature", catLabel:"Portrait tee", note:"The Dragon Fruit portrait tee — portrait and wording in balance on the colour-matched shirt.", url:"https://horizon.meta.com/avatar/item?id=1154445110363706", img:"assets/card-portrait-dragonfruit.png", imgAlt:"Dragon Fruit Portrait Tee — the finished garment, front view, bench render"},
   {name:"Lotus Portrait Tee", price:350, cat:"signature", catLabel:"Portrait tee", note:"The Lotus portrait tee — portrait and wording in balance on the colour-matched shirt.", url:"https://horizon.meta.com/avatar/item?id=2214349306175432", img:"assets/card-portrait-lotus.png", imgAlt:"Lotus Portrait Tee — the finished garment, front view, bench render"},
@@ -1123,9 +1136,6 @@ var ITEMS = [
   {name:"Loud Mouth. Quiet Grind. Top", price:250, cat:"signature", catLabel:"Men's tee", note:"Loud mouth. Quiet grind.", url:"https://horizon.meta.com/avatar/item?id=1448721693260691", img:"assets/quote-tee-loud-quiet.jpg", imgAlt:"Loud Mouth. Quiet Grind. Top — the finished tee, front view, bench render"},
   {name:"No Regrets. Just Lessons and Legends. Top", price:250, cat:"signature", catLabel:"Men's tee", note:"No regrets. Just lessons and legends.", url:"https://horizon.meta.com/avatar/item?id=1895203928137535", img:"assets/quote-tee-no-regrets.jpg", imgAlt:"No Regrets. Just Lessons and Legends. Top — the finished tee, front view, bench render"},
   {name:"Legend in the Making. Coffee in the Taking. Top", price:250, cat:"signature", catLabel:"Men's tee", note:"Legend in the making. Coffee in the taking.", url:"https://horizon.meta.com/avatar/item?id=1681929503355876", img:"assets/quote-tee-legend-coffee.jpg", imgAlt:"Legend in the Making. Coffee in the Taking. Top — the finished tee, front view, bench render"},
-  {name:"Moon Phase Tee I", price:250, cat:"signature", catLabel:"Men's tee", note:"Men's loose tee. Copper moon phases across the chest.", url:"https://horizon.meta.com/avatar/item?id=4408551242790689", img:"assets/moon-phase-tee-1.png", imgAlt:"Moon Phase Tee I — the finished tee, front view, Meta render"},
-  {name:"Moon Phase Tee II", price:250, cat:"signature", catLabel:"Men's tee", note:"Men's loose tee. Gold moon phases across the chest.", url:"https://horizon.meta.com/avatar/item?id=2021064865245641", img:"assets/moon-phase-tee-2.png", imgAlt:"Moon Phase Tee II — the finished tee, front view, Meta render"},
-  {name:"Moon Phase Tee III", price:250, cat:"signature", catLabel:"Men's tee", note:"Men's loose tee. Pale gold moon phases across the chest.", url:"https://horizon.meta.com/avatar/item?id=1772927317101541", img:"assets/moon-phase-tee-3.png", imgAlt:"Moon Phase Tee III — the finished tee, front view, Meta render"},
   {name:"English Gold Fan Dress", price:250, cat:"signature", catLabel:"African Print · Dress", note:"Gold Ankara gown with red-and-black fan motifs and long sleeves.", url:"https://horizon.meta.com/avatar/item?id=1485249197994616", img:"assets/african-english-gold-fan-dress.png", imgAlt:"English Gold Fan Dress — the finished dress, front view, bench render"},
   {name:"Big Star Ankara Dress", price:250, cat:"signature", catLabel:"African Print · Dress", note:"Gold Ankara gown scattered with big blue starbursts.", url:"https://horizon.meta.com/avatar/item?id=2586060858567663", img:"assets/african-big-star-ankara-dress.png", imgAlt:"Big Star Ankara Dress — the finished dress, front view, bench render"},
   {name:"Kente Zigzag Hoodie", price:250, cat:"signature", catLabel:"African Print · Hoodie top — Matching set", note:"Kente zigzag hoodie in green, gold and white — pairs with the Kente Zigzag Jogger Pants.", url:"https://horizon.meta.com/avatar/item?id=4759173494369115", img:"assets/kente-zigzag-hoodie-meta-20261121.png", imgAlt:"Kente Zigzag Hoodie — the finished hoodie, front view, Meta render"},
@@ -1139,8 +1149,6 @@ var ITEMS = [
      arrays, so removing the entry leaves their alignment untouched.) */
   {name:"NorCal Ice-Warrior Top", price:250, cat:"signature", catLabel:"Men's top — Matching set", note:"Ice-armour top made for NorCal — matches the NorCal Ice-Warrior Pants.", display:true, url:"https://horizon.meta.com/avatar/item?id=1153802590679732", img:"assets/norcal-ice-warrior-top-card.png", imgAlt:"NorCal Ice-Warrior Top — the finished garment, front view, bench render"},
   {name:"J. MacNasty Top", price:100, cat:"signature", catLabel:"Men's top", note:"The top made for J. MacNasty.", display:true, url:"https://horizon.meta.com/avatar/item?id=2309769803180306", img:"assets/j-macnasty-top-true.png", imgAlt:"J. MacNasty Top — the finished garment, front view, bench render"},
-  {name:"Bone Bella One-Piece", price:350, cat:"signature", catLabel:"One-piece — His & Hers set", note:"The Bone Bella one-piece — the women's twin to Bone Beau.", url:"https://horizon.meta.com/avatar/item?id=1231787989801192", img:"assets/bone-bella-one-piece-card.png", imgAlt:"Bone Bella One-Piece — the finished one-piece, front view, bench render"},
-  {name:"Bone Beau One-Piece", price:350, cat:"signature", catLabel:"Men's one-piece — His & Hers set", note:"The Bone Beau one-piece — the men's twin to Bone Bella.", url:"https://horizon.meta.com/avatar/item?id=1795950064989279", img:"assets/bone-beau-one-piece-card.png", imgAlt:"Bone Beau One-Piece — the finished one-piece, front view, bench render"},
   {name:"Spi-Dheer-Man Sweatshirt Top", price:75, cat:"signature", catLabel:"Men's sweatshirt — Matching set", note:"The Spi-Dheer-Man sweatshirt — the fourth piece of his set.", showcase:true, url:"https://horizon.meta.com/avatar/item?id=2187533488864487", img:"assets/spi-dheer-man-sweatshirt.jpg", imgAlt:"Spi-Dheer-Man Sweatshirt Top — the finished garment, front view, bench render"},
   {name:"Warlock Coat", price:250, cat:"signature", catLabel:"Warlock · Coat — Matching set", note:"The Warlock coat — pairs with the Warlock Pants.", url:"https://horizon.meta.com/avatar/item?id=1434745761409683", img:"assets/warlock-coat-render.jpg", imgAlt:"Warlock Coat — the finished coat, front view, bench render"},
   {name:"Warlock Pants", price:250, cat:"signature", catLabel:"Warlock · Men's pants — Matching set", note:"The Warlock pants — pairs with the Warlock Coat.", url:"https://horizon.meta.com/avatar/item?id=2644698822656376", img:"assets/warlock-pants-render.png", imgAlt:"Warlock Pants — the finished pants, front view, bench render"},
@@ -1248,7 +1256,8 @@ var ITEMS = [
   {name:"Prism Purple Sequin Cap", price:250, cat:"signature", catLabel:"Sequin cap", note:"Sequin baseball cap in prism purple.", url:"https://horizon.meta.com/avatar/item?id=4237613466546579", img:"assets/cap-prism-purple-meta-20261120.png", imgAlt:"Prism Purple Sequin Cap — the finished cap, front view, Meta render"},
   {name:"Black Sequin Cap", price:250, cat:"signature", catLabel:"Sequin cap", note:"Sequin baseball cap in black.", url:"https://horizon.meta.com/avatar/item?id=1823246315600521", img:"assets/cap-black-meta-20261120.png", imgAlt:"Black Sequin Cap — the finished cap, front view, Meta render"},
   {name:"Royal Blue Sequin Cap", price:250, cat:"signature", catLabel:"Sequin cap", note:"Sequin baseball cap in royal blue.", url:"https://horizon.meta.com/avatar/item?id=1461567019489684", img:"assets/cap-royal-blue-meta-20261120.png", imgAlt:"Royal Blue Sequin Cap — the finished cap, front view, Meta render"},
-  {name:"Thanksgiving Harvest Jacket", price:350, cat:"signature", catLabel:"Thanksgiving Harvest · Jacket — Matching set", note:"Autumn harvest jacket with turkeys, pumpkins and gold bows on rich brown.", url:"https://horizon.meta.com/avatar/item?id=899826739824773", img:"assets/thanksgiving-harvest-jacket-meta-20261120.png", imgAlt:"Thanksgiving Harvest Jacket — the finished jacket, front view, Meta render"},
+  {name:"Thanksgiving Harvest Blazer — Pumpkin", price:350, cat:"signature", catLabel:"Thanksgiving Harvest · Blazer — Matching set", note:"Turkey harvest print blazer over a pumpkin silk blouse — matches the Thanksgiving Harvest Pants.", url:"https://horizon.meta.com/avatar/item?id=2934106790306745", img:"assets/thanksgiving-blazer-pumpkin-meta-20261122.png", imgAlt:"Thanksgiving Harvest Blazer — Pumpkin — the finished blazer, front view, Meta render"},
+  {name:"Thanksgiving Harvest Blazer — Cream", price:350, cat:"signature", catLabel:"Thanksgiving Harvest · Blazer — Matching set", note:"Turkey harvest print blazer over a cream silk blouse — matches the Thanksgiving Harvest Pants.", url:"https://horizon.meta.com/avatar/item?id=1619715709957490", img:"assets/thanksgiving-blazer-cream-meta-20261122.png", imgAlt:"Thanksgiving Harvest Blazer — Cream — the finished blazer, front view, Meta render"},
   {name:"Thanksgiving Harvest Pants", price:350, cat:"signature", catLabel:"Thanksgiving Harvest · Pants — Matching set", note:"Matching harvest pants with turkeys, pumpkins and gold bows on rich brown.", url:"https://horizon.meta.com/avatar/item?id=1360082266096843", img:"assets/thanksgiving-harvest-pants-meta-20261120.png", imgAlt:"Thanksgiving Harvest Pants — the finished pants, front view, Meta render"},
   /* Added 2026-11-21 — the navy snowflake knit hat, standing on the Hats shelf beside the other knit hat */
   {name:"Navy Snowflake Knit Hat", price:250, cat:"signature", catLabel:"Knit hat", note:"Navy knit hat with white snowflakes and a white band.", url:"https://horizon.meta.com/avatar/item?id=1495933509296028", img:"assets/meta-NAVY-SNOWFLAKE-KNIT-HAT-20261121.png", imgAlt:"Navy Snowflake Knit Hat — the finished hat, front view, Meta render"},
@@ -1268,7 +1277,6 @@ var ITEMS = [
   {name:"Crystal Crane Blazer", price:350, cat:"signature", catLabel:"Crystal Origami · Blazer", note:"Royal blue blazer with gold origami cranes and crystal gems.", url:"https://horizon.meta.com/avatar/item?id=1661234576047262", img:"assets/crystal-crane-blazer-meta-20261121.png", imgAlt:"Crystal Crane Blazer — the finished blazer, front view, Meta render"},
   {name:"Crystal Origami Quilted Jacket", price:350, cat:"signature", catLabel:"Crystal Origami · Quilted jacket", note:"Purple quilted jacket with gold embroidery and crystal gems.", url:"https://horizon.meta.com/avatar/item?id=2031290104174897", img:"assets/crystal-origami-quilted-jacket-meta-20261121.png", imgAlt:"Crystal Origami Quilted Jacket — the finished jacket, front view, Meta render"},
   {name:"Crystal Origami Trousers", price:350, cat:"signature", catLabel:"Crystal Origami · Men's trousers", note:"Royal blue trousers with gold and turquoise crystal facets.", url:"https://horizon.meta.com/avatar/item?id=1507341167948220", img:"assets/crystal-origami-trousers-meta-20261121.png", imgAlt:"Crystal Origami Trousers — the finished trousers, front view, Meta render"},
-  {name:"Crystal Chain Mules", price:200, cat:"signature", catLabel:"Crystal · Mules", note:"Purple crystal chain mules.", url:"https://horizon.meta.com/avatar/item?id=2008656816481924", img:"assets/crystal-chain-mules-meta-20261121.png", imgAlt:"Crystal Chain Mules — the finished mules, Meta render"},
   {name:"Crystal Cluster Mules", price:200, cat:"signature", catLabel:"Crystal · Mules", note:"Purple crystal cluster mules.", url:"https://horizon.meta.com/avatar/item?id=3318534251869500", img:"assets/crystal-cluster-mules-meta-20261121.png", imgAlt:"Crystal Cluster Mules — the finished mules, Meta render"},
 
   /* Published 2026-11-05 — the African jogger sets for the men's line, standing on the
@@ -3373,7 +3381,6 @@ function lineOf(it){
   if(MEN_SET_CAPS.indexOf(n)>-1) return "men";
   if(n==="Country Class Dress Pants") return "men";
   if(n.indexOf("Warlock")===0) return "men";
-  if(n==="Bone Beau One-Piece") return "men";
   if(MENS_DISTRESSED_JEANS.indexOf(n)>-1) return "men";
   return "women";
 }
@@ -3407,7 +3414,7 @@ var KIND_OVERRIDES={"atlas":"dresses","chaos's hoodie":"tops",
      walls — her settled exception — so no hat or shoe is pinned here. */
   "country class dress pants":"suits","crystal origami trousers":"suits",
   "houndstooth fitted pants":"suits","black ponte pants":"suits",
-  "thanksgiving harvest jacket":"suits","thanksgiving harvest pants":"suits",
+  "thanksgiving harvest blazer — pumpkin":"suits","thanksgiving harvest blazer — cream":"suits","thanksgiving harvest pants":"suits",
   "royal prism monogram pants":"sets","royal prism monogram long-sleeve":"sets",
   "crimson winter pants":"sets","cream and emerald winter pants":"sets",
   "crimson vine black pants":"sets","crimson vine black tee":"sets",
@@ -3419,6 +3426,7 @@ var KIND_OVERRIDES={"atlas":"dresses","chaos's hoodie":"tops",
   "rudolph christmas pajama top — women":"sets","rudolph christmas pajama pants — women":"sets",
   "snowman christmas pajama top — men":"sets","snowman christmas pajama pants — men":"sets",
   "snowman christmas pajama top — women":"sets","snowman christmas pajama pants — women":"sets",
+  "bursting santa pajama top":"sets","bursting santa pajama pants":"sets",
   "cow print skinny jeans":"sets","leopard print skinny jeans":"sets","tiger print skinny jeans":"sets",
   "dalmatian print skinny jeans":"sets","cheetah print skinny jeans":"sets","giraffe print skinny jeans":"sets",
   "zebra print skinny jeans":"sets","python print skinny jeans":"sets",
@@ -3621,6 +3629,7 @@ function render(){
       ["American Eagle Embroidered Top","American Eagle Embroidered Pants"],
       ["Rudolph Christmas Pajama Top — Men","Rudolph Christmas Pajama Pants — Men","Rudolph Christmas Pajama Top — Women","Rudolph Christmas Pajama Pants — Women"],
       ["Snowman Christmas Pajama Top — Men","Snowman Christmas Pajama Pants — Men","Snowman Christmas Pajama Top — Women","Snowman Christmas Pajama Pants — Women"],
+      ["Bursting Santa Pajama Top","Bursting Santa Pajama Pants"],
       ["Deco Coral Corset","Deco Coral Leggings"],
       ["Celestial Plum Corset","Celestial Plum Leggings"],
       ["Emerald Floral Corset","Emerald Floral Leggings"],
@@ -3633,7 +3642,6 @@ function render(){
       ["NorCal Ice-Warrior Top","NorCal Ice-Warrior Pants"],
       ["Pirate Captain Coat","Pirate Captain Trousers"],
       ["I'll Just Buy More Chips!! Shirt","I'll Just Buy More Chips!! Pants","I'll Just Buy More Chips!! Hat"],
-      ["Bone Bella One-Piece","Bone Beau One-Piece"],
       ["Warlock Coat","Warlock Pants"],
       ["Street King Crown Shirt","Street King Stone Crown Shirt"],
       ["Houndstooth Shrug","Houndstooth Blazer","Houndstooth Fitted Pants","Black Ponte Pants"]
@@ -3670,7 +3678,7 @@ function render(){
       "Celestial Plum Corset","Celestial Plum Leggings",
       "Emerald Floral Corset","Emerald Floral Leggings",
       "Magenta Peony Corset","Magenta Peony Leggings",
-      "Black Lace Corset Top","Cream Velor Corset Top","Black Lace Cream-Waist Leggings",
+      "Black Lace Corset Top","Black Lace Cream-Waist Leggings","Cream Velor Corset Top",
       "Cut-Across Corset Top"
     ];
     leggingOrder.forEach(function(nm){
@@ -3776,7 +3784,7 @@ function render(){
      sneakers by colourway. */
   if(grids.shoes){
     var shoeOrder=[
-      "Diamond Kintsugi Mules","Obsidian Bloom Mules","Midnight Rose Mules","Royal Prism Mules","Crystal Chain Mules","Crystal Cluster Mules",
+      "Diamond Kintsugi Mules","Obsidian Bloom Mules","Midnight Rose Mules","Royal Prism Mules","Crystal Cluster Mules",
       "Savanna Noir Shoes","Divine Vine Slingbacks","Velvet & Lace Slingbacks","Queens Ruby Heart High-Tops",
       "Jo Mama G Jogger Sneakers — Deep Purple","Jo Mama G Jogger Sneakers — Black","Jo Mama G Jogger Sneakers — Deep Fuchsia","Jo Mama G Jogger Sneakers — Teal"
     ];
@@ -3791,7 +3799,6 @@ function render(){
     var hhGroups=[
       ["Rudolph Christmas Pajamas — His & Her Pajama Set",["Rudolph Christmas Pajama Top — Men","Rudolph Christmas Pajama Pants — Men","Rudolph Christmas Pajama Top — Women","Rudolph Christmas Pajama Pants — Women"]],
       ["Snowman Christmas Pajamas — His & Her Pajama Set",["Snowman Christmas Pajama Top — Men","Snowman Christmas Pajama Pants — Men","Snowman Christmas Pajama Top — Women","Snowman Christmas Pajama Pants — Women"]],
-      ["Bone Bella & Bone Beau — His & Hers set",["Bone Bella One-Piece","Bone Beau One-Piece"]],
       ["Country Class — His & Hers set",["Country Class Men's Blazer","Country Class Dress Pants","Country Class Top","Paisley Leather Bottoms","Country Classy Hat"]]
     ];
     hhGroups.forEach(function(g){
@@ -3845,8 +3852,7 @@ function render(){
       "Classic. Not Basic. Top","Not a Morning Person. Not Afternoon Either. Top",
       "Stay Wild. Stay Weird. Stay You. Top","Made of Scars and Sarcastic Remarks Top",
       "Grind Now. Flex Later. Top","Loud Mouth. Quiet Grind. Top",
-      "No Regrets. Just Lessons and Legends. Top","Legend in the Making. Coffee in the Taking. Top",
-      "Moon Phase Tee I","Moon Phase Tee II","Moon Phase Tee III"
+      "No Regrets. Just Lessons and Legends. Top","Legend in the Making. Coffee in the Taking. Top"
     ];
     menTopOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.topsmen.appendChild(src.cloneNode(true)); });
   }
@@ -3866,7 +3872,7 @@ function render(){
      (Catherine's word, 2026-11-20: it looks like a woman's outfit, not a man's), jacket
      first, then pants, cloned from its catalogue cards on the same convention. */
   if(grids.suitswomen){
-    var womenSuitsOrder=["Deep Violet Jacket","Deep Violet Pants","Thanksgiving Harvest Jacket","Thanksgiving Harvest Pants","Houndstooth Blazer","Houndstooth Fitted Pants","Black Ponte Pants","Black + Gold Blazer Top"];
+    var womenSuitsOrder=["Deep Violet Jacket","Deep Violet Pants","Thanksgiving Harvest Blazer — Pumpkin","Thanksgiving Harvest Blazer — Cream","Thanksgiving Harvest Pants","Houndstooth Blazer","Houndstooth Fitted Pants","Black Ponte Pants","Black + Gold Blazer Top"];
     womenSuitsOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.suitswomen.appendChild(src.cloneNode(true)); });
   }
   /* Wall top-up: a wall must hold EVERY piece of its kind for its line, not only the
