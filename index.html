@@ -405,8 +405,8 @@ body.gate-open{overflow:hidden}
       <article class="vip-card" data-request-kind="showcase" data-name="brass balls tee"><img class="card-img" src="assets/brass-balls-tee-render.png" alt="Brass Balls Tee — special request piece, made for Abrasspair, display only"><h3>Brass Balls Tee</h3><p class="vip-line">Made for Abrasspair. One only.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
       <!-- Moved under Display at Catherine's word (2026-11-22): The Blammer — a piece made for one person — stands here as a display piece only, no buy link and no price shown, and nowhere in the buyable catalogue; its catalogue entry carries display:true. -->
       <article class="vip-card" data-request-kind="showcase" data-name="the blammer"><img class="card-img" src="assets/blammer-card.png" alt="The Blammer — special request piece, made for Chopsanity, display only"><h3>The Blammer</h3><p class="vip-line">Made for Chopsanity. One only.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
-      <!-- Ruby Harvest Gown — Bread's (Showbread1's) dress stands in the showcase too, as the section's standing exception: a full buyable card, NOT display only, and it also keeps its regular card on the Dresses wall. Same picture, price and Horizon link in both places. -->
-      <article class="card" data-cat="signature" data-name="ruby harvest gown" data-line="both"><button type="button" class="card-view-btn" aria-label="See the whole piece: Ruby Harvest Gown"><img class="card-img" src="assets/ruby-harvest-gown-card.png" alt="Ruby Harvest Gown — the finished gown, front view, bench render"></button><div class="card-top"><h3>Ruby Harvest Gown</h3><span class="price">250 Credits</span></div><div class="cat">Gown</div><p class="note">Made for Showbread1. Feather skirt with a ruby collar and gold wheat harvest at the hem.</p><div class="card-actions"><a class="mini-btn primary" href="https://horizon.meta.com/avatar/item?id=4686256675025894" target="_blank" rel="noopener">Click here for more details</a><button class="mini-btn" type="button" data-copy="https://horizon.meta.com/avatar/item?id=4686256675025894">Copy Horizon address</button></div></article>
+      <!-- Moved under Display at Catherine's word (2026-11-23): the Ruby Harvest Gown — made for Showbread1 — stands here as a display piece only, no buy link and no price shown, and nowhere in the buyable catalogue; its catalogue entry carries display:true. If somebody wants it, they can request it. -->
+      <article class="vip-card" data-request-kind="showcase" data-name="ruby harvest gown"><img class="card-img" src="assets/ruby-harvest-gown-card.png" alt="Ruby Harvest Gown — special request piece, made for Showbread1, display only"><h3>Ruby Harvest Gown</h3><p class="vip-line">Made for Showbread1.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
     </div>
   </section>
 </div>
@@ -1022,7 +1022,7 @@ var ITEMS = [
   {name:"Peacock Royale", price:200, cat:"signature", catLabel:"Tee", note:"The peacock tee — Peacock Royale.", url:"https://horizon.meta.com/avatar/item?id=3636525666516779", img:"assets/peacock-royale-card.png", imgAlt:"Peacock Royale — the finished tee, front view, bench render"},
   {name:"Highland Cow Chic Dress", price:500, cat:"signature", catLabel:"Dress", note:"The Highland Cow Chic dress.", url:"https://horizon.meta.com/avatar/item?id=1087523517606598", img:"assets/highland-cow-chic-card.png", imgAlt:"Highland Cow Chic Dress — the finished dress, front view, bench render"},
   {name:"Kitenge Crescent Dress", price:250, cat:"signature", catLabel:"Dress", note:"Burgundy and navy kitenge with gold crescents, flared A-line cut.", url:"https://horizon.meta.com/avatar/item?id=2430199727788989", img:"assets/kitenge-crescent-dress-card.png", imgAlt:"Kitenge Crescent Dress — the finished dress, front view, bench render"},
-  {name:"Ruby Harvest Gown", price:250, cat:"signature", catLabel:"Gown", note:"Made for Showbread1. Feather skirt with a ruby collar and gold wheat harvest at the hem.", url:"https://horizon.meta.com/avatar/item?id=4686256675025894", img:"assets/ruby-harvest-gown-card.png", imgAlt:"Ruby Harvest Gown — the finished gown, front view, bench render"},
+  {name:"Ruby Harvest Gown", price:250, cat:"signature", catLabel:"Gown", note:"Made for Showbread1. Feather skirt with a ruby collar and gold wheat harvest at the hem.", display:true, url:"https://horizon.meta.com/avatar/item?id=4686256675025894", img:"assets/ruby-harvest-gown-card.png", imgAlt:"Ruby Harvest Gown — the finished gown, front view, bench render"},
   {name:"Wilson’s Bird-of-Paradise Tee", price:200, cat:"signature", catLabel:"Bird tee", note:"The Wilson’s bird-of-paradise tee — one of the jewel-bird tees.", url:"https://horizon.meta.com/avatar/item?id=3640461029440694", img:"assets/bird-wilson-card.png", imgAlt:"Wilson’s Bird-of-Paradise Tee — the finished tee, front view, bench render"},
   {name:"Resplendent Quetzal Tee", price:200, cat:"signature", catLabel:"Bird tee", note:"The resplendent quetzal tee — one of the jewel-bird tees.", url:"https://horizon.meta.com/avatar/item?id=1888292065472061", img:"assets/bird-quetzal-card.png", imgAlt:"Resplendent Quetzal Tee — the finished tee, front view, bench render"},
   {name:"Himalayan Monal Tee", price:200, cat:"signature", catLabel:"Bird tee", note:"The Himalayan monal tee — one of the jewel-bird tees.", url:"https://horizon.meta.com/avatar/item?id=1184990470738287", img:"assets/bird-monal-card.png", imgAlt:"Himalayan Monal Tee — the finished tee, front view, bench render"},
@@ -3787,7 +3787,7 @@ function render(){
       "Tiger Noir","Atlas","The Black Widow's Lace","Royal Purple Widow's Lace Gown","Purple Violet Widow's Lace Gown","Garnet Wine Widow's Lace Gown","Midnight Blue Widow's Lace Gown","Emerald Widow's Lace Gown",
       "Moonlit Web Gown","Highland Cow Chic Dress","Olive Suede Fringe Dress","Kitenge Crescent Dress",
       "English Gold Fan Dress","Big Star Ankara Dress","Baby Moo — Grazer & Speckles Dress",
-      "Elegant Long Red Satin Skirt","Ruby Harvest Gown",
+      "Elegant Long Red Satin Skirt",
       "Nordic Snowflake Sweater Dress","Black Sunburst Dress",
       "Red Snowflake Sweater Dress","Snowman Sweater Dress","Christmas Tree Sweater Dress","Red and White Snowflake Turtleneck Dress",
       "Gold Glitter Gown"
@@ -4133,8 +4133,8 @@ function applyFilter(){
       showV=qWords.every(function(w,i){ return vhay.indexOf(w)>-1 || !!vstems[qStems[i]]; });
     } else if(currentKind!=="all"){
       /* A category view is a narrowed view: display-only showcase pieces step aside, the
-         same way they do for a search — except a buyable showcase piece that belongs to
-         the tapped category in this line (the Ruby Harvest Gown under Dresses). */
+         same way they do for a search — a showcase piece shows in a category view only
+         if its own kind and line match the tapped category. */
       var vn=(vc.getAttribute("data-name")||"").toLowerCase();
       var vk=KINDS_BY_NAME[vn]||[];
       var vit=null;
