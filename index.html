@@ -409,6 +409,24 @@ body.gate-open{overflow:hidden}
       <article class="vip-card" data-request-kind="showcase" data-name="ruby harvest gown"><img class="card-img" src="assets/ruby-harvest-gown-card.png" alt="Ruby Harvest Gown — special request piece, made for Showbread1, display only"><h3>Ruby Harvest Gown</h3><p class="vip-line">Made for Showbread1.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
     </div>
   </section>
+
+  <!-- THE ZODIAC CORNER (Catherine, 2026-11-25): zodiac shirts stand here as display pieces
+       only — no price, no buy link. A customer picks their sign and theirs is made on
+       request; the two Aquarius long-sleeve tees are the samples. Their catalogue entries
+       carry display:true, like the other display pieces. -->
+  <section data-zodiac aria-labelledby="zodiac-h">
+    <div class="sec-head">
+      <div>
+        <h2 id="zodiac-h"><svg class="sec-mask" aria-hidden="true"><use href="#mg-mask"/></svg>The Zodiac Corner</h2>
+        <div class="gold-rule"></div>
+        <div class="boutique-note" role="note"><p>These two Aquarius shirts are the samples — pick your sign, and yours will be made on request.</p></div>
+      </div>
+    </div>
+    <div class="grid">
+      <article class="vip-card" data-request-kind="showcase" data-name="aquarius — the water bearer"><img class="card-img" src="assets/zodiac-aquarius-1.png" alt="Aquarius — The Water Bearer — long-sleeve astrology shirt, display only, made on request"><h3>Aquarius — The Water Bearer</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
+      <article class="vip-card" data-request-kind="showcase" data-name="aquarius — water bearer in gold"><img class="card-img" src="assets/zodiac-aquarius-2.png" alt="Aquarius — Water Bearer in Gold — long-sleeve astrology shirt, display only, made on request"><h3>Aquarius — Water Bearer in Gold</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
+    </div>
+  </section>
 </div>
 
 
@@ -1337,6 +1355,8 @@ var ITEMS = [
   {name:"Men's Sanyan Jogger Pants", price:250, cat:"signature", catLabel:"African Print · Jogger pants — Matching set", note:"Cream and tan Sanyan aso oke woven joggers — pairs with the Men's Sanyan Hoodie.", url:"https://horizon.meta.com/avatar/item?id=1805226367360262", img:"assets/mens-sanyan-jogger-pants-meta-20261121.png", imgAlt:"Men's Sanyan Jogger Pants — the finished pants, front view, Meta render"},
   {name:"Men's Kuba Hoodie", price:250, cat:"signature", catLabel:"African Print · Jogger hoodie — Matching set", note:"Tan and charcoal Kuba status cloth hoodie, nested diamonds — pairs with the Men's Kuba Jogger Pants.", url:"https://horizon.meta.com/avatar/item?id=1683929440193783", img:"assets/mens-kuba-hoodie-meta-20261121.png", imgAlt:"Men's Kuba Hoodie — the finished hoodie, front view, Meta render"},
   {name:"Men's Kuba Jogger Pants", price:250, cat:"signature", catLabel:"African Print · Jogger pants — Matching set", note:"Tan and charcoal Kuba status cloth joggers, nested diamonds — pairs with the Men's Kuba Hoodie.", url:"https://horizon.meta.com/avatar/item?id=1697754441921381", img:"assets/mens-kuba-jogger-pants-meta-20261121.png", imgAlt:"Men's Kuba Jogger Pants — the finished pants, front view, Meta render"},
+  {name:"Aquarius — The Water Bearer", cat:"signature", catLabel:"Zodiac · Long-sleeve tee", note:"Your astrology shirt, made on request.", display:true, img:"assets/zodiac-aquarius-1.png", imgAlt:"Aquarius — The Water Bearer — the finished long-sleeve tee, front view, bench render"},
+  {name:"Aquarius — Water Bearer in Gold", cat:"signature", catLabel:"Zodiac · Long-sleeve tee", note:"Your astrology shirt, made on request.", display:true, img:"assets/zodiac-aquarius-2.png", imgAlt:"Aquarius — Water Bearer in Gold — the finished long-sleeve tee, front view, bench render"},
 ];
 
 /* ============ Languages ============ */
@@ -4193,6 +4213,14 @@ function applyFilter(){
     var anySc=false;
     sc.querySelectorAll(".card,.vip-card").forEach(function(c){ if(!c.classList.contains("hidden")) anySc=true; });
     sc.classList.toggle("hidden", !anySc);
+  }
+  /* The Zodiac Corner follows the showcase's own rule: it steps aside when none of its
+     display cards are showing (a search or category view that leaves it empty). */
+  var zd=document.querySelector("[data-zodiac]");
+  if(zd){
+    var anyZd=false;
+    zd.querySelectorAll(".card,.vip-card").forEach(function(c){ if(!c.classList.contains("hidden")) anyZd=true; });
+    zd.classList.toggle("hidden", !anyZd);
   }
   document.querySelectorAll(".soon-band, section[aria-labelledby='sr-invite-h']").forEach(function(el){
     el.classList.toggle("hidden",searching || currentKind!=="all" || currentFilter!=="all");
