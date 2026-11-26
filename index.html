@@ -419,12 +419,13 @@ body.gate-open{overflow:hidden}
       <div>
         <h2 id="zodiac-h"><svg class="sec-mask" aria-hidden="true"><use href="#mg-mask"/></svg>The Zodiac Corner</h2>
         <div class="gold-rule"></div>
-        <div class="boutique-note" role="note"><p>These two Aquarius shirts are the samples — pick your sign, and yours will be made on request.</p></div>
+        <div class="boutique-note" role="note"><p>These shirts are the samples — pick your sign, and yours will be made on request.</p></div>
       </div>
     </div>
     <div class="grid">
       <article class="vip-card" data-request-kind="showcase" data-name="aquarius — the water bearer"><img class="card-img" src="assets/zodiac-aquarius-1.png" alt="Aquarius — The Water Bearer — long-sleeve astrology shirt, display only, made on request"><h3>Aquarius — The Water Bearer</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
       <article class="vip-card" data-request-kind="showcase" data-name="aquarius — water bearer in gold"><img class="card-img" src="assets/zodiac-aquarius-2.png" alt="Aquarius — Water Bearer in Gold — long-sleeve astrology shirt, display only, made on request"><h3>Aquarius — Water Bearer in Gold</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
+      <article class="vip-card" data-request-kind="showcase" data-name="sagittarius — the archer"><img class="card-img" src="assets/zodiac-sagittarius.png" alt="Sagittarius — The Archer — men's long-sleeve astrology shirt, display only, made on request"><h3>Sagittarius — The Archer</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
     </div>
   </section>
 </div>
@@ -1298,7 +1299,8 @@ var ITEMS = [
      the Pretty Pants in Outfits, the two new dresses, the eight sequin caps and the
      Thanksgiving Harvest suit. Appended last so every earlier piece keeps its place
      and the per-language note arrays stay aligned. Pictures are Meta's own renders. */
-  {name:"Black + Gold Blazer Top", price:350, cat:"signature", catLabel:"Blazer", note:"Black blazer with a gold satin blouse and gold embroidery — the gold satin runs below the cuff to the very end of each sleeve.", url:"https://horizon.meta.com/avatar/item?id=1448906093452399", img:"assets/black-gold-blazer-meta-20261120.png", imgAlt:"Black + Gold Blazer Top — the finished blazer, front view, Meta render"},
+  {name:"Black + Gold Blazer Top", price:350, cat:"signature", catLabel:"Blazer", note:"Black blazer with a gold satin blouse and gold embroidery — the gold satin runs below the cuff to the very end of each sleeve. Made to match the Black + Gold Velvet Pants.", url:"https://horizon.meta.com/avatar/item?id=1448906093452399", img:"assets/black-gold-blazer-meta-20261120.png", imgAlt:"Black + Gold Blazer Top — the finished blazer, front view, Meta render"},
+  {name:"Black + Gold Velvet Pants", price:350, cat:"signature", catLabel:"Black + Gold · Pants — Matching set", note:"Black velvet trousers with gold chain trim down each leg, made to match the Black + Gold Blazer Top.", url:"https://horizon.meta.com/avatar/item?id=1514326420618144", img:"assets/black-gold-velvet-pants-meta-20261125.png", imgAlt:"Black + Gold Velvet Pants — the finished pants, front view, Meta render"},
   {name:"Pretty Corset Top", price:350, cat:"outfits", catLabel:"Pretty · Corset top — Matching set", note:"Deep red satin corset with gold vines — the Pretty set.", url:"https://horizon.meta.com/avatar/item?id=1453663790275390", img:"assets/pretty-corset-top-meta-20261120.png", imgAlt:"Pretty Corset Top — the finished corset top, front view, Meta render"},
   {name:"Nordic Snowflake Sweater Dress", price:350, cat:"signature", catLabel:"Dress", note:"Nordic snowflake sweater dress in black cable knit with red snowflakes.", url:"https://horizon.meta.com/avatar/item?id=2233311720551164", img:"assets/nordic-snowflake-dress-meta-20261120.png", imgAlt:"Nordic Snowflake Sweater Dress — the finished dress, front view, Meta render"},
   {name:"Black Sunburst Dress", price:500, cat:"signature", catLabel:"Dress", note:"Black gown with a gold sunburst of gems across the bodice.", url:"https://horizon.meta.com/avatar/item?id=2201633587453676", img:"assets/black-sunburst-dress-meta-20261120.png", imgAlt:"Black Sunburst Dress — the finished dress, front view, Meta render"},
@@ -1357,6 +1359,7 @@ var ITEMS = [
   {name:"Men's Kuba Jogger Pants", price:250, cat:"signature", catLabel:"African Print · Jogger pants — Matching set", note:"Tan and charcoal Kuba status cloth joggers, nested diamonds — pairs with the Men's Kuba Hoodie.", url:"https://horizon.meta.com/avatar/item?id=1697754441921381", img:"assets/mens-kuba-jogger-pants-meta-20261121.png", imgAlt:"Men's Kuba Jogger Pants — the finished pants, front view, Meta render"},
   {name:"Aquarius — The Water Bearer", cat:"signature", catLabel:"Zodiac · Long-sleeve tee", note:"Your astrology shirt, made on request.", display:true, img:"assets/zodiac-aquarius-1.png", imgAlt:"Aquarius — The Water Bearer — the finished long-sleeve tee, front view, bench render"},
   {name:"Aquarius — Water Bearer in Gold", cat:"signature", catLabel:"Zodiac · Long-sleeve tee", note:"Your astrology shirt, made on request.", display:true, img:"assets/zodiac-aquarius-2.png", imgAlt:"Aquarius — Water Bearer in Gold — the finished long-sleeve tee, front view, bench render"},
+  {name:"Sagittarius — The Archer", cat:"signature", catLabel:"Zodiac · Long-sleeve tee", note:"Your astrology shirt, made on request.", display:true, img:"assets/zodiac-sagittarius.png", imgAlt:"Sagittarius — The Archer — the finished men's long-sleeve tee, front view, bench render"},
 ];
 
 /* ============ Languages ============ */
@@ -3967,7 +3970,7 @@ function render(){
      (Catherine's word, 2026-11-20: it looks like a woman's outfit, not a man's), jacket
      first, then pants, cloned from its catalogue cards on the same convention. */
   if(grids.suitswomen){
-    var womenSuitsOrder=["Deep Violet Jacket","Deep Violet Pants","Thanksgiving Harvest Blazer — Pumpkin","Thanksgiving Harvest Blazer — Cream","Thanksgiving Harvest Pants","Houndstooth Blazer","Houndstooth Fitted Pants","Black Ponte Pants","Black + Gold Blazer Top"];
+    var womenSuitsOrder=["Deep Violet Jacket","Deep Violet Pants","Thanksgiving Harvest Blazer — Pumpkin","Thanksgiving Harvest Blazer — Cream","Thanksgiving Harvest Pants","Houndstooth Blazer","Houndstooth Fitted Pants","Black Ponte Pants","Black + Gold Blazer Top","Black + Gold Velvet Pants"];
     womenSuitsOrder.forEach(function(nm){ var src=cardsByName[nm]; if(src) grids.suitswomen.appendChild(src.cloneNode(true)); });
   }
   /* Wall top-up: a wall must hold EVERY piece of its kind for its line, not only the
