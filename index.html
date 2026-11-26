@@ -4140,6 +4140,14 @@ function applyFilter(){
   /* Word by word, not one whole phrase: "purple pants" finds the purple pants even though
      those two words never sit side by side on the card. */
   var qWords=q.split(/\s+/).filter(function(w){ return w.length>0; });
+  /* Glue words carry no product meaning, so they are not required to match: "His and hers
+     Pajamas" asks for the his & hers pajamas, but seven of the ten pajama cards never print
+     the word "and" — requiring it hid them (Catherine, 2026-11-26: the search showed 3 of
+     the 10). Word forms already meet through stemWord above (hers/her, pajamas/pajama);
+     this drop is the other half of the same normalising. Kept only when a real word
+     remains, so a box holding nothing but glue still behaves as an empty search. */
+  var qReal=qWords.filter(function(w){ return w!=="and" && w!=="&"; });
+  if(qReal.length) qWords=qReal;
   var qStems=qWords.map(stemWord);
   /* While a search is typed, the big hero header and the hero banner collapse away, so the
      matching pieces start right under the search bar instead of far down the page behind
