@@ -428,6 +428,24 @@ body.gate-open{overflow:hidden}
       <article class="vip-card" data-request-kind="showcase" data-name="sagittarius — the archer"><img class="card-img" src="assets/zodiac-sagittarius.png" alt="Sagittarius — The Archer — men's long-sleeve astrology shirt, display only, made on request"><h3>Sagittarius — The Archer</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><button type="button" class="btn btn-gold zodiac-req-btn">Request this piece</button></article>
     </div>
   </section>
+
+  <!-- THE CHRISTMAS SHOP (Catherine, 2026-11-26): every Christmas piece gathered in one
+       place — the pajama sets, the Christmas dresses and the snowflake hats each get a
+       second showing here, cloned in render() from their home-collection cards, so the
+       pieces keep their home sections too and the piece count deduplicates by name.
+       Elf, Gingerbread, Penguin, Polar Bear, Nutcracker, Mrs. Claus, Red Santa and
+       Vintage pajama cards do not exist in ITEMS yet — when those cards are built, add
+       their names to the christmasOrder list in render() so they join this shop. -->
+  <section data-christmas aria-labelledby="christmas-h">
+    <div class="sec-head">
+      <div>
+        <h2 id="christmas-h"><svg class="sec-mask" aria-hidden="true"><use href="#mg-mask"/></svg>The Christmas Shop</h2>
+        <div class="gold-rule"></div>
+        <p class="lede">Every Christmas piece in one place — pajama sets, dresses and hats for the season.</p>
+      </div>
+    </div>
+    <div class="grid" data-grid="christmas"></div>
+  </section>
 </div>
 
 
@@ -3627,7 +3645,7 @@ var MATCH_OF={
 var ITEM_BY_NAME={};
 ITEMS.forEach(function(it){ if(!ITEM_BY_NAME[it.name]) ITEM_BY_NAME[it.name]=it; });
 function render(){
-  var grids={rose:document.querySelector('[data-grid="rose"]'),leggings:document.querySelector('[data-grid="leggings"]'),outfits:document.querySelector('[data-grid="outfits"]'),crystal:document.querySelector('[data-grid="crystal"]'),special:document.querySelector('[data-grid="special"]'),halloween:document.querySelector('[data-grid="halloween"]'),jeans:document.querySelector('[data-grid="jeans"]'),jeansmen:document.querySelector('[data-grid="jeans-men"]'),trousers:document.querySelector('[data-grid="trousers-women"]'),trousersmen:document.querySelector('[data-grid="trousers-men"]'),joggerswomen:document.querySelector('[data-grid="joggers-women"]'),joggersmen:document.querySelector('[data-grid="joggers-men"]'),corduroyswomen:document.querySelector('[data-grid="corduroys-women"]'),dresses:document.querySelector('[data-grid="dresses"]'),hats:document.querySelector('[data-grid="hats"]'),shoes:document.querySelector('[data-grid="shoes"]'),hishers:document.querySelector('[data-grid="hishers"]'),animal:document.querySelector('[data-grid="animal"]'),topswomen:document.querySelector('[data-grid="tops-women"]'),topsmen:document.querySelector('[data-grid="tops-men"]'),coats:document.querySelector('[data-grid="coats"]'),houndstooth:document.querySelector('[data-grid="houndstooth"]'),suitsmen:document.querySelector('[data-grid="suits-men"]'),suitswomen:document.querySelector('[data-grid="suits-women"]'),signature:document.querySelector('[data-grid="signature"]')};
+  var grids={rose:document.querySelector('[data-grid="rose"]'),leggings:document.querySelector('[data-grid="leggings"]'),outfits:document.querySelector('[data-grid="outfits"]'),crystal:document.querySelector('[data-grid="crystal"]'),special:document.querySelector('[data-grid="special"]'),halloween:document.querySelector('[data-grid="halloween"]'),jeans:document.querySelector('[data-grid="jeans"]'),jeansmen:document.querySelector('[data-grid="jeans-men"]'),trousers:document.querySelector('[data-grid="trousers-women"]'),trousersmen:document.querySelector('[data-grid="trousers-men"]'),joggerswomen:document.querySelector('[data-grid="joggers-women"]'),joggersmen:document.querySelector('[data-grid="joggers-men"]'),corduroyswomen:document.querySelector('[data-grid="corduroys-women"]'),dresses:document.querySelector('[data-grid="dresses"]'),hats:document.querySelector('[data-grid="hats"]'),shoes:document.querySelector('[data-grid="shoes"]'),hishers:document.querySelector('[data-grid="hishers"]'),animal:document.querySelector('[data-grid="animal"]'),topswomen:document.querySelector('[data-grid="tops-women"]'),topsmen:document.querySelector('[data-grid="tops-men"]'),coats:document.querySelector('[data-grid="coats"]'),houndstooth:document.querySelector('[data-grid="houndstooth"]'),suitsmen:document.querySelector('[data-grid="suits-men"]'),suitswomen:document.querySelector('[data-grid="suits-women"]'),signature:document.querySelector('[data-grid="signature"]'),christmas:document.querySelector('[data-grid="christmas"]')};
   for(var gk in grids){ if(grids[gk]) grids[gk].innerHTML=""; }
   var d=T[curLang]||{};
   var sigQueue=[];
@@ -3783,6 +3801,29 @@ function render(){
     outfitCloneOrder.forEach(function(nm){
       var src=cardsByName[nm];
       if(src) grids.outfits.appendChild(src.cloneNode(true));
+    });
+  }
+  /* The Christmas Shop — Catherine's ruling (2026-11-26): every Christmas piece stands
+     together in one place for the season. Each card here is a second showing, cloned from
+     its home-collection card — the pajama sets first (in set order), then the Christmas
+     dresses, then the snowflake hats — so the pieces keep their home sections too. The
+     clones carry the same name, category and line, so filtering, search and the line tabs
+     treat them exactly like the originals, and the piece count deduplicates by name.
+     Elf, Gingerbread, Penguin, Polar Bear, Nutcracker, Mrs. Claus, Red Santa and Vintage
+     pajama cards do not exist in ITEMS yet — when those cards are built, add their names
+     to this list so they join the shop. */
+  if(grids.christmas){
+    var christmasOrder=[
+      "Rudolph Christmas Pajama Top — Men","Rudolph Christmas Pajama Pants — Men","Rudolph Christmas Pajama Top — Women","Rudolph Christmas Pajama Pants — Women",
+      "Snowman Christmas Pajama Top — Men","Snowman Christmas Pajama Pants — Men","Snowman Christmas Pajama Top — Women","Snowman Christmas Pajama Pants — Women",
+      "Black Santa Christmas Pajama Top — Men","Black Santa Christmas Pajama Pants — Men","Black Santa Christmas Pajama Top — Women","Black Santa Christmas Pajama Pants — Women",
+      "Bursting Santa Pajama Top","Bursting Santa Pajama Pants",
+      "Nordic Snowflake Sweater Dress","Red Snowflake Sweater Dress","Snowman Sweater Dress","Christmas Tree Sweater Dress","Red and White Snowflake Turtleneck Dress",
+      "Navy Snowflake Knit Hat","Green Snowflake Knit Hat","Red Snowflake Knit Hat"
+    ];
+    christmasOrder.forEach(function(nm){
+      var src=cardsByName[nm];
+      if(src) grids.christmas.appendChild(src.cloneNode(true));
     });
   }
   /* The category walls — Catherine's ruling: the joggers (each line separately) and the women's
@@ -4243,6 +4284,14 @@ function applyFilter(){
     var anyZd=false;
     zd.querySelectorAll(".card,.vip-card").forEach(function(c){ if(!c.classList.contains("hidden")) anyZd=true; });
     zd.classList.toggle("hidden", !anyZd);
+  }
+  /* The Christmas Shop follows the same rule: it steps aside when none of its cards
+     are showing (a search or category view that leaves it empty). */
+  var ch=document.querySelector("[data-christmas]");
+  if(ch){
+    var anyCh=false;
+    ch.querySelectorAll(".card,.vip-card").forEach(function(c){ if(!c.classList.contains("hidden")) anyCh=true; });
+    ch.classList.toggle("hidden", !anyCh);
   }
   document.querySelectorAll(".soon-band, section[aria-labelledby='sr-invite-h']").forEach(function(el){
     el.classList.toggle("hidden",searching || currentKind!=="all" || currentFilter!=="all");
