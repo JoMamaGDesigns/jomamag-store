@@ -423,9 +423,9 @@ body.gate-open{overflow:hidden}
       </div>
     </div>
     <div class="grid">
-      <article class="vip-card" data-request-kind="showcase" data-name="aquarius — the water bearer"><img class="card-img" src="assets/zodiac-aquarius-1.png" alt="Aquarius — The Water Bearer — long-sleeve astrology shirt, display only, made on request"><h3>Aquarius — The Water Bearer</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
-      <article class="vip-card" data-request-kind="showcase" data-name="aquarius — water bearer in gold"><img class="card-img" src="assets/zodiac-aquarius-2.png" alt="Aquarius — Water Bearer in Gold — long-sleeve astrology shirt, display only, made on request"><h3>Aquarius — Water Bearer in Gold</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
-      <article class="vip-card" data-request-kind="showcase" data-name="sagittarius — the archer"><img class="card-img" src="assets/zodiac-sagittarius.png" alt="Sagittarius — The Archer — men's long-sleeve astrology shirt, display only, made on request"><h3>Sagittarius — The Archer</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><span class="vip-hint">Tap the picture to see the whole piece</span></article>
+      <article class="vip-card" data-request-kind="showcase" data-name="aquarius — the water bearer"><img class="card-img" src="assets/zodiac-aquarius-1.png" alt="Aquarius — The Water Bearer — long-sleeve astrology shirt, display only, made on request"><h3>Aquarius — The Water Bearer</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><button type="button" class="btn btn-gold zodiac-req-btn">Request this piece</button><span class="vip-hint">Tap the picture to see the whole piece</span></article>
+      <article class="vip-card" data-request-kind="showcase" data-name="aquarius — water bearer in gold"><img class="card-img" src="assets/zodiac-aquarius-2.png" alt="Aquarius — Water Bearer in Gold — long-sleeve astrology shirt, display only, made on request"><h3>Aquarius — Water Bearer in Gold</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><button type="button" class="btn btn-gold zodiac-req-btn">Request this piece</button><span class="vip-hint">Tap the picture to see the whole piece</span></article>
+      <article class="vip-card" data-request-kind="showcase" data-name="sagittarius — the archer"><img class="card-img" src="assets/zodiac-sagittarius.png" alt="Sagittarius — The Archer — men's long-sleeve astrology shirt, display only, made on request"><h3>Sagittarius — The Archer</h3><p class="vip-line">Your astrology shirt, made on request.</p><span class="display-tag">Display</span><button type="button" class="btn btn-gold zodiac-req-btn">Request this piece</button><span class="vip-hint">Tap the picture to see the whole piece</span></article>
     </div>
   </section>
 </div>
@@ -4646,6 +4646,10 @@ applyFilter();
     cimg.parentNode.insertBefore(btn,cimg);
     btn.appendChild(cimg);
     btn.addEventListener("click",function(){ openViewer(card,btn); });
+    /* Zodiac Corner cards carry a visible Request button of their own; it opens the same
+       viewer, where the showcase request path (Request this piece → email address) lives. */
+    var rbtn=card.querySelector(".zodiac-req-btn");
+    if(rbtn){ rbtn.addEventListener("click",function(e){ e.stopPropagation(); openViewer(card,rbtn); }); }
     /* A tap anywhere else on the card opens it too — the whole card is the doorway. */
     card.addEventListener("click",function(e){
       if(e.target.closest(".vip-view-btn")) return; /* the button already handled it */
